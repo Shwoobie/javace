@@ -21,7 +21,6 @@ public class Parser {
 
     private void program() {
         block();
-        mustbe(TK.EOF);
     }
 
     private void block() {
