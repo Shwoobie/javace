@@ -114,7 +114,6 @@ public class Scan {
                         return ccase2('[',']',TK.BOX);
                     case '-':
                         return ccase1or2('-','>',TK.MINUS,TK.ARROW);
-			return  
 
                     case EOF:
                         got_eof = true;
