@@ -2,8 +2,8 @@
 
 // Token Kind (internal representations of tokens)
 
-public enum TK {//
-//
+public enum TK {
+
     VAR,     // var
     RAV,     // rav
     PRINT,   // print
