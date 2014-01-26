@@ -166,7 +166,7 @@ public class Parser {
         }
         if(is(TK.ID)){ scan();}
         if(is(TK.NUM)){ scan();}
-        parse_error("ERROR: expected a factor");
+        //parse_error("ERROR: expected a factor");
 
     }
 
