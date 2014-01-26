@@ -27,7 +27,6 @@ public class Parser {
         // you'll need to add some code here
         if (is(TK.VAR)){
             declarations();
-            scan();
         }
         if (is(TK.ID) || is(TK.PRINT) || is(TK.IF) || is(TK.DO) || is(TK.FA)){
             statement_list();
