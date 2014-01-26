@@ -65,7 +65,7 @@ public class Scan {
 
         while(true) {
 // QUESTION 1: What is purpose of putback?
-
+//if we want to return to the previous character
 // QUESTION 2: What are the values of putback and c just before the identifier
 //             'hello' is returned from the input 'hello*45'?
 
@@ -94,6 +94,8 @@ public class Scan {
                         return ccase1('*',TK.TIMES);
                     case '=':
                         return ccase1('=',TK.EQ);
+                    case '+':
+                        return ccase1('+',TK.PLUS);
 
 // QUESTION 3:  What does the following case and the code in it do?
 
@@ -112,7 +114,6 @@ public class Scan {
                         return ccase2('[',']',TK.BOX);
                     case '-':
                         return ccase1or2('-','>',TK.MINUS,TK.ARROW);
-		    case '+':
 			return  
 
                     case EOF:
