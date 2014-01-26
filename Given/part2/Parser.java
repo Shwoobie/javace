@@ -21,6 +21,7 @@ public class Parser {
 
     private void program() {
         block();
+        mustbe(TK.EOF);
     }
 
     private void block() {
@@ -47,7 +48,6 @@ public class Parser {
         while(is(TK.ID)|| is(TK.PRINT) || is(TK.IF) || is(TK.DO) || is(TK.FA)){
            statement();  
         }//end while
-        mustbe(TK.EOF);
     }
 
     private void statement() {
