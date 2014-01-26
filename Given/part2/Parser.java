@@ -143,7 +143,7 @@ public class Parser {
         // you'll need to add some code here
         term();
         while(is(TK.PLUS) || is(TK.MINUS)){
-            addtop();
+            addop();
             term();
         }
     }
