@@ -133,7 +133,7 @@ public class Parser {
     private void expression() {
         // you'll need to add some code here
         simple();
-        while(is(TK.NE) || is(TK.GE) || is(TK.LE) || is(TK.GT) || is(TK.LT) || is(TK.EQ)){
+        if(is(TK.NE) || is(TK.GE) || is(TK.LE) || is(TK.GT) || is(TK.LT) || is(TK.EQ)){
             relop();
             simple();
         }
@@ -166,7 +166,7 @@ public class Parser {
         }
         else if(is(TK.ID)){ scan();}
         else if(is(TK.NUM)){ scan();}
-        else{parse_error("ERROR: expected a factor");}
+        else{parse_error("expected a factor");}
     }
 
     private void relop() {
