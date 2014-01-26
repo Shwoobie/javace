@@ -27,7 +27,7 @@ public class Parser {
         // you'll need to add some code here
         if (is(TK.VAR)){
             declarations();
-            scan()
+            scan();
         }
         if (is(TK.ID) || is(TK.PRINT) || is(TK.IF) || is(TK.DO) || is(TK.FA)){
             statement_list();
@@ -48,16 +48,16 @@ public class Parser {
         while(is(TK.ID)|| is(TK.PRINT) || is(TK.IF) || is(TK.DO) || is(TK.FA)){
            statement();  
         }//end while
-        mustbe(TK.EOF)
+        mustbe(TK.EOF);
     }
 
     private void statement() {
         // you'll need to add some code here
         if (is(TK.ID)){ assignment();}
         else if(is(TK.PRINT)){ print(); }
-        else if (is(TK.IF)){if_fn()}
-        else if (is(TK.DO)){do_fn()}
-        else if (is(TK.FA)){fa()}  
+        else if (is(TK.IF)){if_fn();}
+        else if (is(TK.DO)){do_fn();}
+        else if (is(TK.FA)){fa();}  
         scan();
     }
 
@@ -72,7 +72,7 @@ public class Parser {
     private void print() {
         // you'll need to add some code here
         scan();
-        expression()
+        expression();
     }
 
     private void if_fn() {
@@ -99,7 +99,7 @@ public class Parser {
         expression();
         if (is(TK.ST)){
             scan();//skip ST
-            expression
+            expression();
         }
         commands();
         mustbe(TK.AF);
@@ -109,7 +109,7 @@ public class Parser {
         // you'll need to add some code here
         guarded_command();
         while(is(TK.BOX)){
-            scan()
+            scan();
             guarded_command();
         }
         if (is(TK.ELSE)){
@@ -166,7 +166,7 @@ public class Parser {
         }
         if(is(TK.ID)){ scan();}
         if(is(TK.NUM)){ scan();}
-        parse_error("ERROR: expected a factor")
+        parse_error("ERROR: expected a factor");
 
     }
 
