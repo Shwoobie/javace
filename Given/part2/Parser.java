@@ -164,7 +164,7 @@ public class Parser {
         }
         else if(is(TK.ID)){ scan();}
         else if(is(TK.NUM)){ scan();}
-        else{parse_error("expected a factor");}
+        else{parse_error("factor");}
     }
 
     private void relop() {
