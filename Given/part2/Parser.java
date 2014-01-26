@@ -164,10 +164,9 @@ public class Parser {
             expression();
             mustbe(TK.RPAREN);
         }
-        if(is(TK.ID)){ scan();}
-        if(is(TK.NUM)){ scan();}
-        //parse_error("ERROR: expected a factor");
-
+        else if(is(TK.ID)){ scan();}
+        else if(is(TK.NUM)){ scan();}
+        else{parse_error("ERROR: expected a factor");}
     }
 
     private void relop() {
