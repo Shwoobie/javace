@@ -56,7 +56,7 @@ public class Parser {
         else if (is(TK.IF)){if_fn();}
         else if (is(TK.DO)){do_fn();}
         else if (is(TK.FA)){fa();}  
-        scan();
+        else parse_error("expected a statement");
     }
 
     private void assignment() {
