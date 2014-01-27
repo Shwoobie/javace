@@ -8,7 +8,8 @@ public class Symbol_table {
 	public int depth = 0;
 
    public void sym_push() {
-      st.push(new Vector<Symbol>());
+      Vector<Symbol> v = new Vector<Symbol>();
+      st.push(v);
       return;
    }
 
