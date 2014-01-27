@@ -2,22 +2,22 @@ import java.util.*;
 import java.io.*;
 
 public class Symbol_table {
-   private Stack<Vector> st;
+   private Stack<Vector<Symbol>> st;
 	private Symbol sym;
 	private Token tok;
 	public static int depth = 0;
 
-   static void sym_push() {
+   public Vector<Symbol> sym_push() {
       st.push(new Vector<Symbol>());
       return;
    }
 
-   static void sym_pop() {
+   public Vector<Symbol> sym_pop() {
       st.pop();
       return;
    }
 
-   static void sym_top() {
+   public Vector<Symbol> sym_top() {
       return st.peek();
    
    }
