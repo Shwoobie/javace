@@ -5,7 +5,7 @@ public class Symbol_table {
    private Stack st;
 	private Sym sym;
 	private Token tok;
-	public static depth = 0;
+	public static int depth = 0;
 
    static void sym_push() {
       st.push(new Vector());
@@ -23,12 +23,13 @@ public class Symbol_table {
    }
 
    public void checkSym(Symbol sym) {
-      if (!compare(sym))){
+      if (!compare(sym)){
          System.err.println( "undeclared variable " + sym.name + " on line " + tok.lineNumber);
          System.exit(1);
          }
-      else 
+      else {
          return;
+      }
    }
 
    public void addSym(Symbol newSym) {
@@ -51,3 +52,4 @@ public class Symbol_table {
       }
       return 0;
    }
+}
