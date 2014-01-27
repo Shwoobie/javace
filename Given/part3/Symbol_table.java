@@ -25,7 +25,7 @@ public class Symbol_table {
 
    public void checkSym(Symbol sym) {
       if (!compare(sym)){
-         System.err.println( "undeclared variable " + sym.name + " on line " + tok.lineNumber);
+         System.err.println( "undeclared variable " + sym.name + " on line " + sym.dec_line);
          System.exit(1);
          }
       else {
@@ -35,7 +35,7 @@ public class Symbol_table {
 
    public void addSym(Symbol newSym) {
       if (compare(newSym)){
-         System.err.println( "variable " + tok.string + " is redeclared on line " + tok.lineNumber);
+         System.err.println( "variable " + newSym.name + " is redeclared on line " + newSym.dec_line);
       }
       else{
          sym_top().addElement(newSym);
