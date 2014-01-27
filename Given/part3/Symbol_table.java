@@ -48,8 +48,8 @@ public class Symbol_table {
    public boolean compare(Symbol newSym) {//compares names in the vector 
       for(int i = 0; i < sym_top().size(); i++){
          if(newSym.name == (sym_top().get(i)).name)
-            return 1;
+            return true;
       }
-      return 0;
+      return false;
    }
 }
