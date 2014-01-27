@@ -7,12 +7,12 @@ public class Symbol_table {
 	private Token tok;
 	public static int depth = 0;
 
-   public Vector<Symbol> sym_push() {
+   public void sym_push() {
       st.push(new Vector<Symbol>());
       return;
    }
 
-   public Vector<Symbol> sym_pop() {
+   public void sym_pop() {
       st.pop();
       return;
    }
