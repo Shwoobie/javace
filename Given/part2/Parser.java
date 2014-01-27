@@ -69,7 +69,12 @@ public class Parser {
 
     private void assignment() {
         // you'll need to add some code here
-        mustbe(TK.ID);
+
+        newSym.dec_line = tok.lineNumber;
+        newSym.nesting_depth = table.depth;
+        newSym.name = tok.string;
+        (table.sym_top()).checkSym(newSym);
+        scan();
         mustbe(TK.ASSIGN);
         expression();
 
@@ -98,6 +103,12 @@ public class Parser {
     private void fa() {
         // you'll need to add some code here
         scan();// skip fa
+        if(is(TK.ID)){
+        newSym.dec_line = tok.lineNumber;//replaces must be tk.id
+        newSym.nesting_depth = table.depth;
+        newSym.name = tok.string;
+        (table.sym_top()).checkSym(newSym);
+        }
         mustbe(TK.ID);
         mustbe(TK.ASSIGN);
         expression();
