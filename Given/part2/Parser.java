@@ -6,8 +6,6 @@ public class Parser {
     // tok is global to all these parsing methods;
     // scan just calls the scanner's scan method and saves the result in tok.
     private Token tok; // the current token
-    Symbol_table table;
-    Symbol newSym = new Symbol(tok.lineNumber , table.depth, tok.string);//symbol object for making IDs to put in the symbol table after declaration
     private void scan() {
         tok = scanner.scan();
     }
@@ -27,27 +25,21 @@ public class Parser {
 
     private void block() {
         // you'll need to add some code here
-        table.sym_push();
         if (is(TK.VAR)){
             declarations();
         }
         if (is(TK.ID) || is(TK.PRINT) || is(TK.IF) || is(TK.DO) || is(TK.FA)){
             statement_list();
         }
-        table.sym_pop();
+
     }
 
     private void declarations() {
         mustbe(TK.VAR);
         while( is(TK.ID) ) {
-            newSym.dec_line = tok.lineNumber;
-            newSym.nesting_depth = table.depth;
-            newSym.name = tok.string;
-            (table.sym_top()).addSym(newSym);
             scan();
         }
         mustbe(TK.RAV);
-
     }
 
     private void statement_list() {
@@ -69,12 +61,7 @@ public class Parser {
 
     private void assignment() {
         // you'll need to add some code here
-        parse_error( "ppuuuuuuuuuuusssssssss");
-        newSym.dec_line = tok.lineNumber;
-        newSym.nesting_depth = table.depth;
-        newSym.name = tok.string;
-        (table.sym_top()).checkSym(newSym);
-        scan();
+        mustbe(TK.ID);
         mustbe(TK.ASSIGN);
         expression();
 
@@ -103,12 +90,6 @@ public class Parser {
     private void fa() {
         // you'll need to add some code here
         scan();// skip fa
-        if(is(TK.ID)){
-        newSym.dec_line = tok.lineNumber;//replaces must be tk.id
-        newSym.nesting_depth = table.depth;
-        newSym.name = tok.string;
-        (table.sym_top()).checkSym(newSym);
-        }
         mustbe(TK.ID);
         mustbe(TK.ASSIGN);
         expression();
@@ -181,15 +162,7 @@ public class Parser {
             expression();
             mustbe(TK.RPAREN);
         }
-        else if(is(TK.ID)){ 
-            newSym.dec_line = tok.lineNumber;
-            newSym.nesting_depth = table.depth;
-            newSym.name = tok.string;
-            (table.sym_top()).checkSym(newSym);
-            scan();
-
-
-        }
+        else if(is(TK.ID)){ scan();}
         else if(is(TK.NUM)){ scan();}
         else{parse_error("factor");}
     }
