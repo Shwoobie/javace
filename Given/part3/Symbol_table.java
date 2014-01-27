@@ -62,7 +62,7 @@ public class Symbol_table {
             }
             tempSt.pop();
             tempSym.depth--;
-         }while(tempSym.depth > 0)
+         }while(tempSym.depth > 0);
 
       }
       return false;
