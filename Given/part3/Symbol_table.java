@@ -2,7 +2,7 @@ import java.util.*;
 import java.io.*;
 
 public class Symbol_table {
-   private Stack<Vector<Symbol>> st;
+   private Stack<Vector<Symbol>> st = new Stack();
 	private Symbol sym;
 	private Token tok;
 	public int depth = 0;
