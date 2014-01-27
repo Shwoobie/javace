@@ -6,7 +6,7 @@ public class Symbol {
     public int nesting_depth;
     public int assign_line;
     public String name;
-    public Vector<int> used_on;
+    public Vector used_on;
 
     public Symbol(int dec_line, int nesting_depth, String name) {
         this.dec_line = dec_line;
