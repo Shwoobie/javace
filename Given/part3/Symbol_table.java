@@ -23,6 +23,7 @@ public class Symbol_table {
    }
 
    public void checkSym(Symbol sym) {
+      System.err.println( "diiiiiiiiiiiiiiiicccckkkssss");
       if (compare(sym)){
          System.err.println( "undeclared variable " + sym.name + " on line " + tok.lineNumber);
          System.exit(1);
@@ -33,7 +34,7 @@ public class Symbol_table {
    }
 
    public void addSym(Symbol newSym) {
-      
+      System.err.println( "vaaaaaaaaaagggggggggggggssssssss");
       if (!compare(newSym)){
          System.err.println( "variable " + sym.name + " is redeclared on line " + tok.lineNumber);
       }
@@ -46,6 +47,7 @@ public class Symbol_table {
 
  
    public boolean compare(Symbol newSym) {//compares names in the vector 
+      System.err.println( "tiiiiitttttssss");
       for(int i = 0; i < sym_top().size(); i++){
          if((newSym.name).equals((sym_top().get(i)).name))
             return true;
