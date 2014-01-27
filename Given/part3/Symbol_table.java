@@ -19,7 +19,9 @@ public class Symbol_table {
    }
 
    public Vector<Symbol> sym_top() {
-      return st.peek();
+      if(!tempSt.empty()){
+         return st.peek();
+      }  
    
    }
 
@@ -38,8 +40,10 @@ public class Symbol_table {
          System.err.println( "variable " + newSym.name + " is redeclared on line " + newSym.dec_line);
       }
       else{
-         sym_top().addElement(newSym);
-         return;
+         if(!tempSt.empty()){
+            sym_top().addElement(newSym);
+            return;
+         }
       }
    }
 
@@ -54,17 +58,18 @@ public class Symbol_table {
          Symbol tempSym = new Symbol(newSym.dec_line, newSym.nesting_depth, newSym.name);
          Stack<Vector<Symbol>> tempSt = new Stack<Vector<Symbol>>();
          tempSt = st;
-         if(!tempSt.empty())
-         do{
-            for(int i = 0; i < (tempSt.peek()).size(); i++){
-            //System.err.println( "current name " + newSym.name + " itt name " + (sym_top().get(i)).name);
-            if((tempSym.name).equals((tempSt.peek()).get(i).name)){
-               return true;
-            }
-            }
-            tempSt.pop();
-            tempSym.nesting_depth--;
-         }while(tempSym.nesting_depth > 0);
+         if(!tempSt.empty()){
+            do{
+               for(int i = 0; i < (tempSt.peek()).size(); i++){
+               //System.err.println( "current name " + newSym.name + " itt name " + (sym_top().get(i)).name);
+               if((tempSym.name).equals((tempSt.peek()).get(i).name)){
+                  return true;
+               }
+               }
+               tempSt.pop();
+               tempSym.nesting_depth--;
+            }while(tempSym.nesting_depth > 0);
+      }
 
       }
       return false;
