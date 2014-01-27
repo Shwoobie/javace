@@ -21,8 +21,9 @@ public class Symbol_table {
    public Vector<Symbol> sym_top() {
       if(!st.empty()){
          return st.peek();
-      }  
-   
+      }
+      else  
+         return st.peek();
    }
 
    public void checkSym(Symbol sym) {
