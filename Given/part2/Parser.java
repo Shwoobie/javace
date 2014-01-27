@@ -69,7 +69,7 @@ public class Parser {
 
     private void assignment() {
         // you'll need to add some code here
-        System.err.println( "ppuuuuuuuuuuusssssssss");
+        parse_error( "ppuuuuuuuuuuusssssssss");
         newSym.dec_line = tok.lineNumber;
         newSym.nesting_depth = table.depth;
         newSym.name = tok.string;
