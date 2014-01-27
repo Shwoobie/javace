@@ -23,7 +23,7 @@ public class Symbol_table {
    }
 
    public void checkSym(Symbol sym) {
-      if (!compare(sym)){
+      if (compare(sym)){
          System.err.println( "undeclared variable " + sym.name + " on line " + tok.lineNumber);
          System.exit(1);
          }
@@ -34,7 +34,7 @@ public class Symbol_table {
 
    public void addSym(Symbol newSym) {
       
-      if (compare(newSym)){
+      if (!compare(newSym)){
          System.err.println( "variable " + sym.name + " is redeclared on line " + tok.lineNumber);
       }
       else{
