@@ -178,8 +178,6 @@ public class Parser {
             newSym = new Symbol(tok.lineNumber, table.depth, tok.string);
             table.checkSym(newSym);
             scan();
-
-
         }
         else if(is(TK.NUM)){ scan();}
         else{parse_error("factor");}
