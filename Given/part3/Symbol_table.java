@@ -2,13 +2,13 @@ import java.util.*;
 import java.io.*;
 
 public class Symbol_table {
-   private Stack st;
-	private Sym sym;
+   private Stack<Vector> st;
+	private Symbol sym;
 	private Token tok;
 	public static int depth = 0;
 
    static void sym_push() {
-      st.push(new Vector());
+      st.push(new Vector<Symbol>());
       return;
    }
 

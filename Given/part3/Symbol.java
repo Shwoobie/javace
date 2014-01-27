@@ -12,6 +12,6 @@ public class Symbol {
         this.dec_line = dec_line;
         this.nesting_depth = nesting_depth;
         this.name = name;
-        this.used_on = new Vector();
+        this.used_on = new Vector<int>();
     }
 }
