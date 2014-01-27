@@ -19,7 +19,7 @@ public class Symbol_table {
    }
 
    public Vector<Symbol> sym_top() {
-      if(!tempSt.empty()){
+      if(!st.empty()){
          return st.peek();
       }  
    
@@ -40,7 +40,7 @@ public class Symbol_table {
          System.err.println( "variable " + newSym.name + " is redeclared on line " + newSym.dec_line);
       }
       else{
-         if(!tempSt.empty()){
+         if(!st.empty()){
             sym_top().addElement(newSym);
             return;
          }
