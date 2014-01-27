@@ -54,6 +54,7 @@ public class Symbol_table {
          Symbol tempSym = new Symbol(newSym.dec_line, newSym.nesting_depth, newSym.name);
          Stack<Vector<Symbol>> tempSt = new Stack<Vector<Symbol>>();
          tempSt = st;
+         if(!tempSt.empty())
          do{
             for(int i = 0; i < (tempSt.peek()).size(); i++){
             //System.err.println( "current name " + newSym.name + " itt name " + (sym_top().get(i)).name);
