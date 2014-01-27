@@ -7,7 +7,7 @@ public class Parser {
     // scan just calls the scanner's scan method and saves the result in tok.
     private Token tok; // the current token
     Symbol_table table = new Symbol_table();
-    Symbol newSym = new Symbol(tok.lineNumber , table.depth, tok.string);//symbol object for making IDs to put in the symbol table after declaration
+    Symbol newSym = new Symbol();//symbol object for making IDs to put in the symbol table after declaration
     private void scan() {
         tok = scanner.scan();
     }

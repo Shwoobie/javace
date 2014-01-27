@@ -8,10 +8,10 @@ public class Symbol {
     public String name;
     public Vector<Integer> used_on;
 
-    public Symbol(int dec_line, int nesting_depth, String name) {
-        this.dec_line = dec_line;
-        this.nesting_depth = nesting_depth;
-        this.name = name;
+    public Symbol() {
+        this.dec_line = 0;
+        this.nesting_depth = 0;
+        this.name = "";
         this.used_on = new Vector<Integer>(10, 2);
     }
 }
