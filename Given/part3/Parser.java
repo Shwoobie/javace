@@ -7,7 +7,7 @@ public class Parser {
     // scan just calls the scanner's scan method and saves the result in tok.
     private Token tok; // the current token
     Symbol_table table = new Symbol_table();
-    Symbol newSym = new Symbol();//symbol object for making IDs to put in the symbol table after declaration
+    Symbol newSym;//symbol object for making IDs to put in the symbol table after declaration
     private void scan() {
         tok = scanner.scan();
     }
@@ -40,9 +40,7 @@ public class Parser {
     private void declarations() {
         mustbe(TK.VAR);
         while( is(TK.ID) ) {
-            newSym.dec_line = tok.lineNumber;
-            newSym.nesting_depth = table.depth;
-            newSym.name = tok.string;
+            newSym = new Symbol(tok.lineNumber, table.depth, tok.string);
             table.addSym(newSym);
             scan();
         }
@@ -69,9 +67,7 @@ public class Parser {
 
     private void assignment() {
         // you'll need to add some code here
-        newSym.dec_line = tok.lineNumber;
-        newSym.nesting_depth = table.depth;
-        newSym.name = tok.string;
+        newSym = new Symbol(tok.lineNumber, table.depth, tok.string);
         table.checkSym(newSym);
         scan();
         mustbe(TK.ASSIGN);
@@ -103,9 +99,7 @@ public class Parser {
         // you'll need to add some code here
         scan();// skip fa
         if(is(TK.ID)){
-        newSym.dec_line = tok.lineNumber;//replaces must be tk.id
-        newSym.nesting_depth = table.depth;
-        newSym.name = tok.string;
+        newSym = new Symbol(tok.lineNumber, table.depth, tok.string);
         table.checkSym(newSym);
         }
         mustbe(TK.ID);
@@ -181,9 +175,7 @@ public class Parser {
             mustbe(TK.RPAREN);
         }
         else if(is(TK.ID)){ 
-            newSym.dec_line = tok.lineNumber;
-            newSym.nesting_depth = table.depth;
-            newSym.name = tok.string;
+            newSym = new Symbol(tok.lineNumber, table.depth, tok.string);
             table.checkSym(newSym);
             scan();
 

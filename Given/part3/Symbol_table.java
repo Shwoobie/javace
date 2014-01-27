@@ -48,7 +48,7 @@ public class Symbol_table {
    public boolean compare(Symbol newSym) {//compares names in the vector 
       for(int i = 0; i < sym_top().size(); i++){
          if((newSym.name).equals((sym_top().get(i)).name))
-            System.err.println( "current name " + newSym.name + " itt name " + (sym_top().get(i)).name);
+            //System.err.println( "current name " + newSym.name + " itt name " + (sym_top().get(i)).name);
             return true;
       }
       return false;
