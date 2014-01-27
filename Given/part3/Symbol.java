@@ -5,7 +5,7 @@ public class Symbol {
     public int dec_line;
     public int nesting_depth;
     public int assign_line;
-    public String name;
+    public String name = "";
     public Vector<Integer> used_on;
 
     public Symbol() {

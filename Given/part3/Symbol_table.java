@@ -35,7 +35,7 @@ public class Symbol_table {
 
    public void addSym(Symbol newSym) {
       if (compare(newSym)){
-         System.err.println( "variable " + newSym.name + " is redeclared on line " + tok.lineNumber);
+         System.err.println( "variable " + tok.string + " is redeclared on line " + tok.lineNumber);
       }
       else{
          sym_top().addElement(newSym);
