@@ -1,3 +1,6 @@
+import java.util.*;
+import java.io.*;
+
 public class Symbol {
     public int dec_line;
     public int nesting_depth;
