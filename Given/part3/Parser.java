@@ -137,6 +137,7 @@ public class Parser {
     private void commands() {
         // you'll need to add some code here
         mustbe(TK.ARROW);
+        table.depth++;
         block();
     }
 
