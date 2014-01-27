@@ -43,7 +43,7 @@ public class Parser {
             newSym.dec_line = tok.lineNumber;
             newSym.nesting_depth = table.depth;
             newSym.name = tok.string;
-            (table.sym_top()).addSym(newSym);
+            table.addSym(newSym);
             scan();
         }
         mustbe(TK.RAV);
@@ -72,7 +72,7 @@ public class Parser {
         newSym.dec_line = tok.lineNumber;
         newSym.nesting_depth = table.depth;
         newSym.name = tok.string;
-        (table.sym_top()).checkSym(newSym);
+        table.checkSym(newSym);
         scan();
         mustbe(TK.ASSIGN);
         expression();
@@ -106,7 +106,7 @@ public class Parser {
         newSym.dec_line = tok.lineNumber;//replaces must be tk.id
         newSym.nesting_depth = table.depth;
         newSym.name = tok.string;
-        (table.sym_top()).checkSym(newSym);
+        table.checkSym(newSym);
         }
         mustbe(TK.ID);
         mustbe(TK.ASSIGN);
@@ -184,7 +184,7 @@ public class Parser {
             newSym.dec_line = tok.lineNumber;
             newSym.nesting_depth = table.depth;
             newSym.name = tok.string;
-            (table.sym_top()).checkSym(newSym);
+            table.checkSym(newSym);
             scan();
 
 
