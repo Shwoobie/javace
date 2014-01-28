@@ -57,6 +57,7 @@ public class Symbol_table {
             System.err.println( "RETURN TRUE");
             return true;
          }
+         System.err.println( "CURRFALSE NAME " + newSym.name + " ITTFALSE NAME " + (sym_top().get(i)).name);
       }
 
       if (newSym.nesting_depth > 0){
@@ -71,6 +72,7 @@ public class Symbol_table {
                   System.err.println( "RETURN TRUE2");
                   return true;
                }
+               System.err.println( "CURRFALSE NAME " + newSym.name + " ITTFALSE NAME " + (sym_top().get(i)).name);
                }
                tempSt.pop();
                tempSym.nesting_depth--;
@@ -78,7 +80,6 @@ public class Symbol_table {
       }
 
       }
-      System.err.println( "CURRFALSE NAME " + newSym.name + " ITTFALSE NAME " + (sym_top().get(i)).name);
       System.err.println( "RETURN FALSE");
       return false;
 
