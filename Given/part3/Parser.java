@@ -69,6 +69,7 @@ public class Parser {
     private void assignment() {
         // you'll need to add some code here
         newSym = new Symbol(tok.lineNumber, table.depth, tok.string);
+        newSym = new Symbol(tok.lineNumber, table.depth, tok.string);
         table.checkSym(newSym);
         scan();
         mustbe(TK.ASSIGN);
