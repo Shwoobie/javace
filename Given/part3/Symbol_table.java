@@ -3,6 +3,7 @@ import java.io.*;
 
 public class Symbol_table {
    private Stack<Vector<Symbol>> st = new Stack<Vector<Symbol>>();
+   private Stack<Vector<Symbol>> tempTable = new Stack<Vector<Symbol>>();
 	private Symbol sym;
 	private Token tok;
 	public int depth = 0;
@@ -67,21 +68,22 @@ public class Symbol_table {
       if (newSym.nesting_depth > 0){
 
          Symbol tempSym = new Symbol(newSym.dec_line, newSym.nesting_depth, newSym.name);
-         Stack<Vector<Symbol>> tempSt = new Stack<Vector<Symbol>>(st);
-         //tempSt = st;
-         if(!tempSt.empty()){
+         //Stack<Vector<Symbol>> st = new Stack<Vector<Symbol>>(st);
+         //st = st;
+         if(!st.empty()){
             do{
-               for(int i = 0; i < (tempSt.peek()).size(); i++){
+               for(int i = 0; i < (st.peek()).size(); i++){
                System.err.println( "CURRENT NAME " + newSym.name + " ITT NAME " + (sym_top().get(i)).name);
-               if((tempSym.name).equals((tempSt.peek()).get(i).name)){
+               if((tempSym.name).equals((st.peek()).get(i).name)){
                   System.err.println( "RETURN TRUE2");
                   return true;
                }
                System.err.println( "CURRFALSE2 NAME " + newSym.name + " ITTFALSE2 NAME " + (sym_top().get(i)).name);
                }
-               tempSt.pop();
+               tempTable.push(st.pop()); // transfer the stack contents to tempTable
                tempSym.nesting_depth--;
             }while(tempSym.nesting_depth >= 0);
+            while(!tempTable.empty()){st.push(tempTable.pop())} //repopulate the original stack
       }
       }
       System.err.println( "RETURN FALSE");
