@@ -18,6 +18,7 @@ public class Symbol_table {
          st.pop();
          return;
       }
+      else System.err.println( "ya fucked up");
    }
 
    public Vector<Symbol> sym_top() {
