@@ -255,7 +255,7 @@ public class Parser {
                         printed.addElement(perm_table.sym_top().get(i).assign_on.get(j));
                         System.err.print(perm_table.sym_top().get(i).assign_on.get(j) + "(" + count+ ") ");
                     }
-                    else {
+                    if(count == 1) {
                         System.err.print(perm_table.sym_top().get(i).assign_on.get(j) + " ");
                         printed.addElement(perm_table.sym_top().get(i).assign_on.get(j));
                     }
@@ -286,7 +286,7 @@ public class Parser {
                         printed.addElement(perm_table.sym_top().get(i).used_on.get(j));
                         System.err.print(perm_table.sym_top().get(i).used_on.get(j) + "(" + count+ ") ");
                     }
-                    else {
+                    if(count == 1) {
                         System.err.print(perm_table.sym_top().get(i).used_on.get(j) + " ");
                         printed.addElement(perm_table.sym_top().get(i).used_on.get(j));
                     }
