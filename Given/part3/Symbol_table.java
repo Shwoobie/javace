@@ -62,8 +62,8 @@ public class Symbol_table {
           //  System.err.println( "RETURN TRUE");
             return true;
          }
-         return false;
       }
+      return false;
    }
 
 
