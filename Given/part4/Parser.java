@@ -239,6 +239,7 @@ public class Parser {
             if (!(perm_table.sym_top().get(i).assign_on.isEmpty())){
                 System.err.print(" assigned to on: ");
                 Vector<Integer> dup = new Vector<Integer>();
+                Vector<Integer> printed = new Vector<Integer>();
                 for (int j = 0; j < perm_table.sym_top().get(i).assign_on.size(); j++ ){
                     int count = 0;
                     for(int k = 0; k < perm_table.sym_top().get(i).assign_on.size(); k++){
@@ -249,10 +250,15 @@ public class Parser {
                             dup.addElement(perm_table.sym_top().get(i).assign_on.get(j));
                         }
                     }// for k
-                    if (count > 1 && dup.contains(perm_table.sym_top().get(i).assign_on.get(j))){
+                    if (count > 1 && dup.contains(perm_table.sym_top().get(i).assign_on.get(j))
+                        !printed.contains(perm_table.sym_top().get(i).assign_on.get(j))){
+                        printed.addElement(perm_table.sym_top().get(i).assign_on.get(j))
                         System.err.print(perm_table.sym_top().get(i).assign_on.get(j) + "(" + count+ ") ");
                     }
-                    else {System.err.print(perm_table.sym_top().get(i).assign_on.get(j) + " ");}
+                    else {
+                        System.err.print(perm_table.sym_top().get(i).assign_on.get(j) + " ");
+                        printed.addElement(perm_table.sym_top().get(i).assign_on.get(j))
+                    }
                 }// for j
                 System.err.print("\n");
             }//if assign_on not empty
@@ -263,6 +269,7 @@ public class Parser {
             if (!(perm_table.sym_top().get(i).used_on.isEmpty())){
                 System.err.print(" used on: ");
                 Vector<Integer> dup = new Vector<Integer>();
+                Vector<Integer> printed = new Vector<Integer>();
                 for (int j = 0; j < perm_table.sym_top().get(i).used_on.size(); j++ ){
                     int count = 0;
                     for(int k = 0; k < perm_table.sym_top().get(i).used_on.size(); k++){
@@ -274,10 +281,15 @@ public class Parser {
                         }
                     }// for k
 
-                    if (count > 1 && dup.contains(perm_table.sym_top().get(i).used_on.get(j))){
+                    if (count > 1 && dup.contains(perm_table.sym_top().get(i).used_on.get(j))
+                        !printed.contains(perm_table.sym_top().get(i).used_on.get(j))){
+                        printed.addElement(perm_table.sym_top().get(i).used_on.get(j))
                         System.err.print(perm_table.sym_top().get(i).used_on.get(j) + "(" + count+ ") ");
                     }
-                    else {System.err.print(perm_table.sym_top().get(i).used_on.get(j) + " ");}
+                    else {
+                        System.err.print(perm_table.sym_top().get(i).used_on.get(j) + " ");
+                        printed.addElement(perm_table.sym_top().get(i).used_on.get(j))
+                    }
                 }// for j
                 System.err.print("\n");
             }//if used_on not empty
