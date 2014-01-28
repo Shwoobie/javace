@@ -69,9 +69,9 @@ public class Symbol_table {
                }
                tempSt.pop();
                tempSym.nesting_depth--;
-            }while(tempSym.nesting_depth > 0);
+            }while(tempSym.nesting_depth >= 0);
       }
-      
+
       for(int i = 0; (i < sym_top().size()); i++){
          System.err.println( "current name " + newSym.name + " itt name " + (sym_top().get(i)).name);
          if((newSym.name).equals((sym_top().get(i)).name)){
