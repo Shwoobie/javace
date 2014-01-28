@@ -44,7 +44,7 @@ public class Symbol_table {
    }
 
    public void addSym(Symbol newSym) {
-      if (compare(newSym)){
+      if (shallow_compare(newSym)){
          System.err.println( "variable " + newSym.name + " is redeclared on line " + newSym.dec_line);
       }
       else{
@@ -54,6 +54,17 @@ public class Symbol_table {
          }
       }
    }
+
+   public void shallow_compare(Symbol newSym) {
+      for(int i = 0; (i < sym_top().size()); i++){
+       //  System.err.println( "current name " + newSym.name + " itt name " + (sym_top().get(i)).name);
+         if((newSym.name).equals((sym_top().get(i)).name)){
+          //  System.err.println( "RETURN TRUE");
+            return true;
+         }
+         return false;
+   }
+
 
    public boolean compare(Symbol newSym) {//compares names in the vector 
    //   System.err.println(sym_top().size());
