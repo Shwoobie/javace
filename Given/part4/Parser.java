@@ -235,7 +235,7 @@ public class Parser {
                 for (int j = 0; j < perm_table.top().get(i).assign_on.size(); j++ ){
                     int count = 0;
                     for(int k = 0; k < perm_table.top().get(i).assign_on.size(); k++){
-                        if(perm_table.top().get(i).assign_on.get(j) == perm_table.top().get(i).assign_on.get(k){
+                        if(perm_table.top().get(i).assign_on.get(j) == perm_table.top().get(i).assign_on.get(k)){
                             count++;
                         }
                     }// for k
@@ -255,7 +255,7 @@ public class Parser {
                 for (int j = 0; j < perm_table.top().get(i).assign_on.size(); j++ ){
                     int count = 0;
                     for(int k = 0; k < perm_table.top().get(i).assign_on.size(); k++){
-                        if(perm_table.top().get(i).assign_on.get(j) == perm_table.top().get(i).assign_on.get(k){
+                        if(perm_table.top().get(i).assign_on.get(j) == perm_table.top().get(i).assign_on.get(k)){
                             count++;
                         }
                     }// for k
