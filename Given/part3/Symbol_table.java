@@ -17,7 +17,7 @@ public class Symbol_table {
    public void sym_pop() {
       if(!st.empty()){
          st.pop();
-         System.err.println(st.empty());
+       //  System.err.println(st.empty());
          return;
       }
 
@@ -28,7 +28,7 @@ public class Symbol_table {
          return st.peek();
       }
       else  
-         System.err.println("did you go into the else loop? you shouldnt fuck you");
+      //   System.err.println("did you go into the else loop? you shouldnt fuck you");
          return new Vector<Symbol>();
    }
 
@@ -56,14 +56,14 @@ public class Symbol_table {
    }
 
    public boolean compare(Symbol newSym) {//compares names in the vector 
-      System.err.println(sym_top().size());
+   //   System.err.println(sym_top().size());
       for(int i = 0; (i < sym_top().size()); i++){
-         System.err.println( "current name " + newSym.name + " itt name " + (sym_top().get(i)).name);
+       //  System.err.println( "current name " + newSym.name + " itt name " + (sym_top().get(i)).name);
          if((newSym.name).equals((sym_top().get(i)).name)){
-            System.err.println( "RETURN TRUE");
+          //  System.err.println( "RETURN TRUE");
             return true;
          }
-         System.err.println( "CURRFALSE NAME " + newSym.name + " ITTFALSE NAME " + (sym_top().get(i)).name);
+       //  System.err.println( "CURRFALSE NAME " + newSym.name + " ITTFALSE NAME " + (sym_top().get(i)).name);
       }
 
       if (newSym.nesting_depth > 0){
@@ -74,31 +74,31 @@ public class Symbol_table {
          if(!st.empty()){
             do{
                for(int i = 0; i < (st.peek()).size(); i++){
-               System.err.println( "CURRENT NAME " + newSym.name + " ITT NAME " + (sym_top().get(i)).name);
+           //    System.err.println( "CURRENT NAME " + newSym.name + " ITT NAME " + (sym_top().get(i)).name);
                if((tempSym.name).equals((st.peek()).get(i).name)){
-                  System.err.println( "RETURN TRUE2");
+           //       System.err.println( "RETURN TRUE2");
                   while(!tempTable.empty()){
                      st.push(tempTable.pop());
-                     System.err.println(tempTable.empty());
+                //     System.err.println(tempTable.empty());
                   } //repopulate the original stack
                   return true;
 
                }
-               System.err.println( "CURRFALSE2 NAME " + newSym.name + " ITTFALSE2 NAME " + (sym_top().get(i)).name);
+          //     System.err.println( "CURRFALSE2 NAME " + newSym.name + " ITTFALSE2 NAME " + (sym_top().get(i)).name);
                }
                tempTable.push(st.pop()); // transfer the stack contents to tempTable
-               System.err.println(tempTable.empty());
+              // System.err.println(tempTable.empty());
                if(tempSym.nesting_depth != 0)
                   tempSym.nesting_depth--;
             }while(tempSym.nesting_depth >= 0);
 
             while(!tempTable.empty()){
                st.push(tempTable.pop());
-               System.err.println(tempTable.empty());
+              // System.err.println(tempTable.empty());
              } //repopulate the original stack
       }
       }
-      System.err.println( "RETURN FALSE");
+    //  System.err.println( "RETURN FALSE");
       return false;
 
    }
