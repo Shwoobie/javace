@@ -238,7 +238,7 @@ public class Parser {
             System.err.println("  declared on line " + perm_table.sym_top().get(i).dec_line
                 + " at nesting depth " + perm_table.sym_top().get(i).nesting_depth);
             if (!(perm_table.sym_top().get(i).assign_on.isEmpty())){
-                System.err.print("  assigned to on: ");
+                System.err.print("  assigned to on:");
                 Vector<Integer> dup = new Vector<Integer>();
                 Vector<Integer> printed = new Vector<Integer>();
                 for (int j = 0; j < perm_table.sym_top().get(i).assign_on.size(); j++ ){
@@ -254,10 +254,10 @@ public class Parser {
                     if (count > 1 && dup.contains(perm_table.sym_top().get(i).assign_on.get(j)) &&
                             !printed.contains(perm_table.sym_top().get(i).assign_on.get(j))){
                         printed.addElement(perm_table.sym_top().get(i).assign_on.get(j));
-                        System.err.print(perm_table.sym_top().get(i).assign_on.get(j) + "(" + count+ ") ");
+                        System.err.print(" "+perm_table.sym_top().get(i).assign_on.get(j) + "(" + count+ ")");
                     }
                     if(count == 1) {
-                        System.err.print(perm_table.sym_top().get(i).assign_on.get(j) + " ");
+                        System.err.print(" " + perm_table.sym_top().get(i).assign_on.get(j));
                         printed.addElement(perm_table.sym_top().get(i).assign_on.get(j));
                     }
                 }// for j
@@ -285,10 +285,10 @@ public class Parser {
                     if (count > 1 && dup.contains(perm_table.sym_top().get(i).used_on.get(j)) &&
                             !printed.contains(perm_table.sym_top().get(i).used_on.get(j))){
                         printed.addElement(perm_table.sym_top().get(i).used_on.get(j));
-                        System.err.print(perm_table.sym_top().get(i).used_on.get(j) + "(" + count+ ") ");
+                        System.err.print(" "+perm_table.sym_top().get(i).used_on.get(j) + "(" + count+ ")");
                     }
                     if(count == 1) {
-                        System.err.print(perm_table.sym_top().get(i).used_on.get(j) + " ");
+                        System.err.print(" " + perm_table.sym_top().get(i).used_on.get(j));
                         printed.addElement(perm_table.sym_top().get(i).used_on.get(j));
                     }
                 }// for j
