@@ -44,6 +44,19 @@ public class Symbol_table {
       }
    }
 
+
+      public void assign_check(Symbol sym) {
+     // System.err.println( "variable " + sym.name + " linenumber: " + sym.dec_line + "address:" + sym);
+      if (assign(sym) == false){
+         System.err.println( "undeclared variable " + sym.name + " on line " + sym.dec_line);
+         System.exit(1);
+         }
+      else {
+
+         return;
+      }
+   }
+
    public void addSym(Symbol newSym) {
       if (shallow_compare(newSym)){
          System.err.println( "variable " + newSym.name + " is redeclared on line " + newSym.dec_line);
@@ -75,7 +88,7 @@ public class Symbol_table {
          if((newSym.name).equals((sym_top().get(i)).name)){
           //  System.err.println( "RETURN TRUE");
             //add the line number to the used_on vector
-             (sym_top().get(i)).used_on.addElement(newSym.dec_line);
+            (sym_top().get(i)).used_on.addElement(newSym.dec_line);
             return true;
          }
        //  System.err.println( "CURRFALSE NAME " + newSym.name + " ITTFALSE NAME " + (sym_top().get(i)).name);
