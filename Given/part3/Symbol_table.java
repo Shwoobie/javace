@@ -64,7 +64,7 @@ public class Symbol_table {
          if(!tempSt.empty()){
             do{
                for(int i = 0; i < (tempSt.peek()).size(); i++){
-               //System.err.println( "current name " + newSym.name + " itt name " + (sym_top().get(i)).name);
+               System.err.println( "current name " + newSym.name + " itt name " + (sym_top().get(i)).name);
                if((tempSym.name).equals((tempSt.peek()).get(i).name)){
                   return true;
                }
