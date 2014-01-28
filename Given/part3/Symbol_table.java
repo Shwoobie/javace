@@ -33,7 +33,7 @@ public class Symbol_table {
    }
 
    public void checkSym(Symbol sym) {
-      System.err.println( "variable " + sym.name + " linenumber: " + sym.dec_line + "address:" + sym);
+     // System.err.println( "variable " + sym.name + " linenumber: " + sym.dec_line + "address:" + sym);
       if (compare(sym) == false){
          System.err.println( "undeclared variable " + sym.name + " on line " + sym.dec_line);
          System.exit(1);
