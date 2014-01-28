@@ -56,14 +56,15 @@ public class Symbol_table {
       }
    }
 
-   public void addSym(Symbol newSym) {
+   public boolean addSym(Symbol newSym) {
       if (shallow_compare(newSym)){
-         System.err.println( "variable " + newSym.name + " is redeclared on line " + newSym.dec_line);
+        System.err.println( "variable " + newSym.name + " is redeclared on line " + newSym.dec_line);
+        return false;
       }
       else{
          if(!st.empty()){
             sym_top().addElement(newSym);
-            return;
+            return true;
          }
       }
    }
