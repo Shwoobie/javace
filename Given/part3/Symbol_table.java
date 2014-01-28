@@ -26,7 +26,7 @@ public class Symbol_table {
          return st.peek();
       }
       else  
-         System.err.println("did you go into the else loop? you shouldnt fuck you")
+         System.err.println("did you go into the else loop? you shouldnt fuck you");
          return new Vector<Symbol>();
    }
 
