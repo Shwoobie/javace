@@ -234,7 +234,7 @@ public class Parser {
     }
     private void print_st(){    
         for(int i=0; i < perm_table.sym_top().size(); i++){
-            System.err.print(perm_table.sym_top().get(i).name) ;
+            System.err.println(perm_table.sym_top().get(i).name) ;
             System.err.println("  declared on line " + perm_table.sym_top().get(i).dec_line
                 + " at nesting depth " + perm_table.sym_top().get(i).nesting_depth);
             if (!(perm_table.sym_top().get(i).assign_on.isEmpty())){
@@ -261,7 +261,7 @@ public class Parser {
                         printed.addElement(perm_table.sym_top().get(i).assign_on.get(j));
                     }
                 }// for j
-                //System.err.print("\n");
+                System.err.println();
             }//if assign_on not empty
             else{
                 System.err.println("  never assigned");
@@ -292,7 +292,7 @@ public class Parser {
                         printed.addElement(perm_table.sym_top().get(i).used_on.get(j));
                     }
                 }// for j
-                //System.err.print("\n");
+                System.err.println();
             }//if used_on not empty
             else{
                 System.err.println("  never used");
