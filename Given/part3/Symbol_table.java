@@ -26,6 +26,7 @@ public class Symbol_table {
          return st.peek();
       }
       else  
+         System.err.println("did you go into the else loop? you shouldnt fuck you")
          return new Vector<Symbol>();
    }
 
@@ -53,7 +54,7 @@ public class Symbol_table {
    }
 
    public boolean compare(Symbol newSym) {//compares names in the vector 
-      
+      System.err.println(sym_top().size());
       for(int i = 0; (i < sym_top().size()); i++){
          System.err.println( "current name " + newSym.name + " itt name " + (sym_top().get(i)).name);
          if((newSym.name).equals((sym_top().get(i)).name)){
@@ -64,7 +65,7 @@ public class Symbol_table {
       }
 
       if (newSym.nesting_depth > 0){
-         System.err.println("did you go into the if loop?");
+
          Symbol tempSym = new Symbol(newSym.dec_line, newSym.nesting_depth, newSym.name);
          Stack<Vector<Symbol>> tempSt = new Stack<Vector<Symbol>>();
          tempSt = st;
