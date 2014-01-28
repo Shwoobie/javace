@@ -70,9 +70,9 @@ public class Symbol_table {
 
    public boolean shallow_compare(Symbol newSym) {
       for(int i = 0; (i < sym_top().size()); i++){
-       //  System.err.println( "current name " + newSym.name + " itt name " + (sym_top().get(i)).name);
+         System.err.println( "current name " + newSym.name + " itt name " + (sym_top().get(i)).name);
          if((newSym.name).equals((sym_top().get(i)).name)){
-          //  System.err.println( "RETURN TRUE");
+            System.err.println( "RETURN TRUE");
             return true;
          }
       }
