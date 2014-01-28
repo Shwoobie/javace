@@ -70,8 +70,6 @@ public class Parser {
         // you'll need to add some code here
         newSym = new Symbol(tok.lineNumber, table.depth, tok.string);
         System.err.println( "variable " + newSym.name + " linenumber: " + newSym.dec_line + "address:" + newSym);
-        newSym = new Symbol(tok.lineNumber, table.depth, tok.string);
-        System.err.println( "variable " + newSym.name + " linenumber: " + newSym.dec_line + "address:" + newSym);
         table.checkSym(newSym);
         scan();
         mustbe(TK.ASSIGN);
