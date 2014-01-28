@@ -268,8 +268,10 @@ public class Parser {
                     for(int k = 0; k < perm_table.sym_top().get(i).used_on.size(); k++){
                         if(perm_table.sym_top().get(i).used_on.get(j) == perm_table.sym_top().get(i).used_on.get(k)){
                             count++;
+                            System.err.print("found a copy" + perm_table.sym_top().get(i).used_on.get(j));
                         }
                         if (count > 1){
+                            System.err.print("we added to dup" + perm_table.sym_top().get(i).used_on.get(j));
                             dup.addElement(perm_table.sym_top().get(i).used_on.get(j));
                         }
                     }// for k
