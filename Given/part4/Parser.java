@@ -23,6 +23,7 @@ public class Parser {
     }
 
     private void program() {
+        perm_table.sym_push();
         block();
         print_st();
     }
@@ -30,7 +31,7 @@ public class Parser {
     private void block() {
         // you'll need to add some code here
         table.sym_push();
-        perm_table.sym_push();
+        
         if (is(TK.VAR)){
             declarations();
         }
