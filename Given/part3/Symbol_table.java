@@ -25,7 +25,7 @@ public class Symbol_table {
          return st.peek();
       }
       else  
-         return st.peek();
+         return new Vector<Symbol>();
    }
 
    public void checkSym(Symbol sym) {
