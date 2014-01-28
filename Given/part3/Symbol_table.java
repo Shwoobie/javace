@@ -78,6 +78,7 @@ public class Symbol_table {
       }
 
       }
+      System.err.println( "RETURN FALSE");
       return false;
 
    }
