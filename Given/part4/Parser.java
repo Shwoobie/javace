@@ -268,7 +268,7 @@ public class Parser {
             }// else assign_on is empty
 
             if (!(perm_table.sym_top().get(i).used_on.isEmpty())){
-                System.err.print("  used on: ");
+                System.err.print("  used on:");
                 Vector<Integer> dup = new Vector<Integer>();
                 Vector<Integer> printed = new Vector<Integer>();
                 for (int j = 0; j < perm_table.sym_top().get(i).used_on.size(); j++ ){
