@@ -232,12 +232,12 @@ public class Parser {
                             + tok.lineNumber + " " + msg );
         System.exit(1);
     }
-    private void print_st(){
+    private void print_st(){    
         for(int i=0; i < perm_table.sym_top().size(); i++){
-            System.err.print(perm_table.sym_top().get(i).name + "\n  declared on line " + perm_table.sym_top().get(i).dec_line
+            System.err.print(perm_table.sym_top().get(i).name + "\n\tdeclared on line " + perm_table.sym_top().get(i).dec_line
                 + " at nesting depth " + perm_table.sym_top().get(i).nesting_depth + "\n");
             if (!(perm_table.sym_top().get(i).assign_on.isEmpty())){
-                System.err.print("  assigned to on: ");
+                System.err.print("\tassigned to on: ");
                 Vector<Integer> dup = new Vector<Integer>();
                 Vector<Integer> printed = new Vector<Integer>();
                 for (int j = 0; j < perm_table.sym_top().get(i).assign_on.size(); j++ ){
@@ -263,11 +263,11 @@ public class Parser {
                 System.err.print("\n");
             }//if assign_on not empty
             else{
-                System.err.print("  never assigned\n");
+                System.err.print("\tnever assigned\n");
             }// else assign_on is empty
 
             if (!(perm_table.sym_top().get(i).used_on.isEmpty())){
-                System.err.print("  used on: ");
+                System.err.print("\tused on: ");
                 Vector<Integer> dup = new Vector<Integer>();
                 Vector<Integer> printed = new Vector<Integer>();
                 for (int j = 0; j < perm_table.sym_top().get(i).used_on.size(); j++ ){
@@ -294,7 +294,7 @@ public class Parser {
                 System.err.print("\n");
             }//if used_on not empty
             else{
-                System.err.print("  never used\n");
+                System.err.print("\tnever used\n");
             }// else used_on is empty
         }// for print the symbols       
     }//*/
