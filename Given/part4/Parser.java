@@ -234,10 +234,11 @@ public class Parser {
     }
     private void print_st(){    
         for(int i=0; i < perm_table.sym_top().size(); i++){
-            System.err.print(perm_table.sym_top().get(i).name + "\n declared on line " + perm_table.sym_top().get(i).dec_line
-                + " at nesting depth " + perm_table.sym_top().get(i).nesting_depth + "\n");
+            System.err.println(perm_table.sym_top().get(i).name) ;
+            System.err.println("  declared on line " + perm_table.sym_top().get(i).dec_line
+                + " at nesting depth " + perm_table.sym_top().get(i).nesting_depth);
             if (!(perm_table.sym_top().get(i).assign_on.isEmpty())){
-                System.err.print(" assigned to on: ");
+                System.err.println(" assigned to on: ");
                 Vector<Integer> dup = new Vector<Integer>();
                 Vector<Integer> printed = new Vector<Integer>();
                 for (int j = 0; j < perm_table.sym_top().get(i).assign_on.size(); j++ ){
@@ -260,14 +261,14 @@ public class Parser {
                         printed.addElement(perm_table.sym_top().get(i).assign_on.get(j));
                     }
                 }// for j
-                System.err.print("\n");
+                //System.err.print("\n");
             }//if assign_on not empty
             else{
-                System.err.print(" never assigned\n");
+                System.err.println("  never assigned");
             }// else assign_on is empty
 
             if (!(perm_table.sym_top().get(i).used_on.isEmpty())){
-                System.err.print(" used on: ");
+                System.err.println("  used on: ");
                 Vector<Integer> dup = new Vector<Integer>();
                 Vector<Integer> printed = new Vector<Integer>();
                 for (int j = 0; j < perm_table.sym_top().get(i).used_on.size(); j++ ){
@@ -291,10 +292,10 @@ public class Parser {
                         printed.addElement(perm_table.sym_top().get(i).used_on.get(j));
                     }
                 }// for j
-                System.err.print("\n");
+                //System.err.print("\n");
             }//if used_on not empty
             else{
-                System.err.print(" never used\n");
+                System.err.println("  never used");
             }// else used_on is empty
         }// for print the symbols       
     }//*/
