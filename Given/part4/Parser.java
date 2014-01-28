@@ -26,7 +26,7 @@ public class Parser {
     }
 
     private void program() {
-    //    perm_table.sym_push();//**************
+        perm_table.sym_push();//**************
         block();
         //print_st();//************
     }
