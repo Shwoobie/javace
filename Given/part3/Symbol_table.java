@@ -14,8 +14,10 @@ public class Symbol_table {
    }
 
    public void sym_pop() {
-      st.pop();
-      return;
+      if(!st.empty()){
+         st.pop();
+         return;
+      }
    }
 
    public Vector<Symbol> sym_top() {
