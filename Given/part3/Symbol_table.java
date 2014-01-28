@@ -78,6 +78,7 @@ public class Symbol_table {
       }
 
       }
+      System.err.println( "CURRFALSE NAME " + newSym.name + " ITTFALSE NAME " + (sym_top().get(i)).name);
       System.err.println( "RETURN FALSE");
       return false;
 
