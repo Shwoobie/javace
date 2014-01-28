@@ -51,14 +51,7 @@ public class Symbol_table {
    }
 
    public boolean compare(Symbol newSym) {//compares names in the vector 
-      for(int i = 0; (i < sym_top().size()) || i == 0; i++){
-         System.err.println( "current name " + newSym.name + " itt name " + (sym_top().get(i)).name);
-         if((newSym.name).equals((sym_top().get(i)).name)){
-            System.err.println( "RETURN TRUE");
-            return true;
-         }
-         System.err.println( "CURRFALSE NAME " + newSym.name + " ITTFALSE NAME " + (sym_top().get(i)).name);
-      }
+
 
       if (newSym.nesting_depth > 0){
          Symbol tempSym = new Symbol(newSym.dec_line, newSym.nesting_depth, newSym.name);
@@ -66,7 +59,7 @@ public class Symbol_table {
          tempSt = st;
          if(!tempSt.empty()){
             do{
-               for(int i = 0; i < (tempSt.peek()).size() || i == 0; i++){
+               for(int i = 0; i < (tempSt.peek()).size(); i++){
                System.err.println( "CURRENT NAME " + newSym.name + " ITT NAME " + (sym_top().get(i)).name);
                if((tempSym.name).equals((tempSt.peek()).get(i).name)){
                   System.err.println( "RETURN TRUE2");
@@ -78,7 +71,15 @@ public class Symbol_table {
                tempSym.nesting_depth--;
             }while(tempSym.nesting_depth > 0);
       }
-
+      
+      for(int i = 0; (i < sym_top().size()); i++){
+         System.err.println( "current name " + newSym.name + " itt name " + (sym_top().get(i)).name);
+         if((newSym.name).equals((sym_top().get(i)).name)){
+            System.err.println( "RETURN TRUE");
+            return true;
+         }
+         System.err.println( "CURRFALSE NAME " + newSym.name + " ITTFALSE NAME " + (sym_top().get(i)).name);
+      }
       }
       System.err.println( "RETURN FALSE");
       return false;
