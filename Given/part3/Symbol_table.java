@@ -53,8 +53,10 @@ public class Symbol_table {
    public boolean compare(Symbol newSym) {//compares names in the vector 
       for(int i = 0; i < sym_top().size(); i++){
          System.err.println( "current name " + newSym.name + " itt name " + (sym_top().get(i)).name);
-         if((newSym.name).equals((sym_top().get(i)).name))
+         if((newSym.name).equals((sym_top().get(i)).name)){
+            System.err.println( "RETURN TRUE");
             return true;
+         }
       }
 
       if (newSym.nesting_depth > 0){
@@ -66,6 +68,7 @@ public class Symbol_table {
                for(int i = 0; i < (tempSt.peek()).size(); i++){
                System.err.println( "CURRENT NAME " + newSym.name + " ITT NAME " + (sym_top().get(i)).name);
                if((tempSym.name).equals((tempSt.peek()).get(i).name)){
+                  System.err.println( "RETURN TRUE2");
                   return true;
                }
                }
