@@ -10,7 +10,7 @@ public class Parser {
     // scan just calls the scanner's scan method and saves the result in tok.
     private Token tok; // the current token
     Symbol_table table = new Symbol_table();
-    Symbol_table perm_table = new Symbol_table();
+    //Symbol_table perm_table = new Symbol_table(); //***************
     Symbol newSym;//symbol object for making IDs to put in the symbol table after declaration
     private void scan() {
         tok = scanner.scan();
@@ -26,7 +26,7 @@ public class Parser {
     }
 
     private void program() {
-        perm_table.sym_push();
+    //    perm_table.sym_push();//**************
         block();
         //print_st();//************
     }
@@ -50,7 +50,7 @@ public class Parser {
         while( is(TK.ID) ) {
             newSym = new Symbol(tok.lineNumber, table.depth, tok.string);
             table.addSym(newSym);
-            perm_table.addSym(newSym);
+           // perm_table.addSym(newSym);//**********
             scan();
         }
         mustbe(TK.RAV);
