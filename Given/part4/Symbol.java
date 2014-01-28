@@ -13,5 +13,6 @@ public class Symbol {
         this.nesting_depth = depth;
         this.name = string;
         this.used_on = new Vector<Integer>(10, 2);
+        this.used_on = new Vector<Integer>(10, 2);
     }
 }
