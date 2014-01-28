@@ -251,8 +251,8 @@ public class Parser {
                         }
                     }// for k
                     if (count > 1 && dup.contains(perm_table.sym_top().get(i).assign_on.get(j)) &&
-                        !printed.contains(perm_table.sym_top().get(i).assign_on.get(j))){
-                        printed.addElement(perm_table.sym_top().get(i).assign_on.get(j))
+                            !printed.contains(perm_table.sym_top().get(i).assign_on.get(j))){
+                        printed.addElement(perm_table.sym_top().get(i).assign_on.get(j));
                         System.err.print(perm_table.sym_top().get(i).assign_on.get(j) + "(" + count+ ") ");
                     }
                     else {
@@ -282,8 +282,8 @@ public class Parser {
                     }// for k
 
                     if (count > 1 && dup.contains(perm_table.sym_top().get(i).used_on.get(j)) &&
-                        !printed.contains(perm_table.sym_top().get(i).used_on.get(j))){
-                        printed.addElement(perm_table.sym_top().get(i).used_on.get(j))
+                            !printed.contains(perm_table.sym_top().get(i).used_on.get(j))){
+                        printed.addElement(perm_table.sym_top().get(i).used_on.get(j));
                         System.err.print(perm_table.sym_top().get(i).used_on.get(j) + "(" + count+ ") ");
                     }
                     else {
