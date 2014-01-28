@@ -83,7 +83,7 @@ public class Symbol_table {
                tempTable.push(st.pop()); // transfer the stack contents to tempTable
                tempSym.nesting_depth--;
             }while(tempSym.nesting_depth >= 0);
-            while(!tempTable.empty()){st.push(tempTable.pop())} //repopulate the original stack
+            while(!tempTable.empty()){st.push(tempTable.pop());} //repopulate the original stack
       }
       }
       System.err.println( "RETURN FALSE");
