@@ -110,7 +110,7 @@ public class Parser {
         scan();// skip fa
         if(is(TK.ID)){
         newSym = new Symbol(tok.lineNumber, table.depth, tok.string);
-        table.assign(newSym);
+        table.assign_check(newSym);
         }
         mustbe(TK.ID);
         mustbe(TK.ASSIGN);
