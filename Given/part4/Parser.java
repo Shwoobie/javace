@@ -228,10 +228,10 @@ public class Parser {
     }
     private void print_st(){
         for(int i=0; i < perm_table.sym_top().size(); i++){
-            System.err.println(perm_table.sym_top().get(i).name + "\n declared on line " + perm_table.sym_top().get(i).dec_line
+            System.err.print(perm_table.sym_top().get(i).name + "\n declared on line " + perm_table.sym_top().get(i).dec_line
                 + " at nesting depth " + perm_table.sym_top().get(i).nesting_depth + "\n");
             if (!(perm_table.sym_top().get(i).assign_on.isEmpty())){
-                System.err.println(" assigned to on: ");
+                System.err.print(" assigned to on: ");
                 for (int j = 0; j < perm_table.sym_top().get(i).assign_on.size(); j++ ){
                     int count = 0;
                     for(int k = 0; k < perm_table.sym_top().get(i).assign_on.size(); k++){
@@ -240,34 +240,34 @@ public class Parser {
                         }
                     }// for k
                     if (count > 1){
-                        System.err.println(perm_table.sym_top().get(i).assign_on.get(j) + "(" + count+ ") ");
+                        System.err.print(perm_table.sym_top().get(i).assign_on.get(j) + "(" + count+ ") ");
                     }
-                    else {System.err.println(perm_table.sym_top().get(i).assign_on.get(j) + " ");}
+                    else {System.err.print(perm_table.sym_top().get(i).assign_on.get(j) + " ");}
                 }// for j
-                System.err.println("\n");
+                System.err.print("\n");
             }//if assign_on not empty
             else{
-                System.err.println(" never assigned\n");
+                System.err.print(" never assigned\n");
             }// else assign_on is empty
 
             if (!(perm_table.sym_top().get(i).used_on.isEmpty())){
-                System.err.println(" used on: ");
-                for (int j = 0; j < perm_table.sym_top().get(i).assign_on.size(); j++ ){
+                System.err.print(" used on: ");
+                for (int j = 0; j < perm_table.sym_top().get(i).used_on.size(); j++ ){
                     int count = 0;
-                    for(int k = 0; k < perm_table.sym_top().get(i).assign_on.size(); k++){
-                        if(perm_table.sym_top().get(i).assign_on.get(j) == perm_table.sym_top().get(i).assign_on.get(k)){
+                    for(int k = 0; k < perm_table.sym_top().get(i).used_on.size(); k++){
+                        if(perm_table.sym_top().get(i).used_on.get(j) == perm_table.sym_top().get(i).used_on.get(k)){
                             count++;
                         }
                     }// for k
                     if (count > 1){
-                        System.err.println(perm_table.sym_top().get(i).assign_on.get(j) + "(" + count+ ") ");
+                        System.err.print(perm_table.sym_top().get(i).used_on.get(j) + "(" + count+ ") ");
                     }
-                    else {System.err.println(perm_table.sym_top().get(i).assign_on.get(j) + " ");}
+                    else {System.err.print(perm_table.sym_top().get(i).used_on.get(j) + " ");}
                 }// for j
-                System.err.println("\n");
+                System.err.print("\n");
             }//if used_on not empty
             else{
-                System.err.println(" never used\n");
+                System.err.print(" never used\n");
             }// else used_on is empty
         }// for print the symbols
     }
