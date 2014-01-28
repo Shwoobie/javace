@@ -34,6 +34,7 @@ public class Parser {
         if (is(TK.ID) || is(TK.PRINT) || is(TK.IF) || is(TK.DO) || is(TK.FA)){
             statement_list();
         }
+        table.depth--;
         table.sym_pop();
     }
 
