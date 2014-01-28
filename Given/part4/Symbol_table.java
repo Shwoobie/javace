@@ -103,11 +103,12 @@ public class Symbol_table {
            //    System.err.println( "CURRENT NAME " + newSym.name + " ITT NAME " + (sym_top().get(i)).name);
                   if((tempSym.name).equals((st.peek()).get(i).name)){
            //       System.err.println( "RETURN TRUE2");
+                    (st.peek()).get(i).used_on.addElement(newSym.dec_line);
                      while(!tempTable.empty()){
                         st.push(tempTable.pop());
                 //     System.err.println(tempTable.empty());
                      } //repopulate the original stack
-                     (st.peek()).get(i).used_on.addElement(newSym.dec_line);
+                     
                      return true;
 
                   }
@@ -157,12 +158,13 @@ public class Symbol_table {
            //    System.err.println( "CURRENT NAME " + newSym.name + " ITT NAME " + (sym_top().get(i)).name);
                   if((tempSym.name).equals((st.peek()).get(i).name)){
            //       System.err.println( "RETURN TRUE2");
-                     while(!tempTable.empty()){
-                        st.push(tempTable.pop());
+                    st.peek().get(i).assign_on.addElement(newSym.dec_line);
+                    while(!tempTable.empty()){
+                      st.push(tempTable.pop());
                 //     System.err.println(tempTable.empty());
-                     } //repopulate the original stack
-                     st.peek().get(i).assign_on.addElement(newSym.dec_line);
-                     return true;
+                    } //repopulate the original stack
+                     
+                    return true;
 
                   }
           //     System.err.println( "CURRFALSE2 NAME " + newSym.name + " ITTFALSE2 NAME " + (sym_top().get(i)).name);
