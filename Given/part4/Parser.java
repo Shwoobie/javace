@@ -233,14 +233,18 @@ public class Parser {
                 + " at nesting depth " + perm_table.sym_top().get(i).nesting_depth + "\n");
             if (!(perm_table.sym_top().get(i).assign_on.isEmpty())){
                 System.err.print(" assigned to on: ");
+                Vector<Integer> dup = new Vector<Integer>();
                 for (int j = 0; j < perm_table.sym_top().get(i).assign_on.size(); j++ ){
                     int count = 0;
                     for(int k = 0; k < perm_table.sym_top().get(i).assign_on.size(); k++){
                         if(perm_table.sym_top().get(i).assign_on.get(j) == perm_table.sym_top().get(i).assign_on.get(k)){
                             count++;
                         }
+                        if (count > 1){
+                            dup.addElement(perm_table.sym_top().get(i).assign_on.get(j));
+                        }
                     }// for k
-                    if (count > 1){
+                    if (count > 1 && !dup.contains(perm_table.sym_top().get(i).assign_on.get(j))){
                         System.err.print(perm_table.sym_top().get(i).assign_on.get(j) + "(" + count+ ") ");
                     }
                     else {System.err.print(perm_table.sym_top().get(i).assign_on.get(j) + " ");}
@@ -253,14 +257,19 @@ public class Parser {
 
             if (!(perm_table.sym_top().get(i).used_on.isEmpty())){
                 System.err.print(" used on: ");
+                Vector<Integer> dup = new Vector<Integer>();
                 for (int j = 0; j < perm_table.sym_top().get(i).used_on.size(); j++ ){
                     int count = 0;
                     for(int k = 0; k < perm_table.sym_top().get(i).used_on.size(); k++){
                         if(perm_table.sym_top().get(i).used_on.get(j) == perm_table.sym_top().get(i).used_on.get(k)){
                             count++;
                         }
+                        if (count > 1){
+                            dup.addElement(perm_table.sym_top().get(i).used_on.get(j));
+                        }
                     }// for k
-                    if (count > 1){
+
+                    if (count > 1 && !dup.contains(perm_table.sym_top().get(i).used_on.get(j))){
                         System.err.print(perm_table.sym_top().get(i).used_on.get(j) + "(" + count+ ") ");
                     }
                     else {System.err.print(perm_table.sym_top().get(i).used_on.get(j) + " ");}
