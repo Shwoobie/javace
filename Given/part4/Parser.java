@@ -7,6 +7,7 @@ public class Parser {
     // scan just calls the scanner's scan method and saves the result in tok.
     private Token tok; // the current token
     Symbol_table table = new Symbol_table();
+    Symbol_table perm_table = new Symbol_table();
     Symbol newSym;//symbol object for making IDs to put in the symbol table after declaration
     private void scan() {
         tok = scanner.scan();
@@ -23,11 +24,13 @@ public class Parser {
 
     private void program() {
         block();
+        print_st();
     }
 
     private void block() {
         // you'll need to add some code here
         table.sym_push();
+        perm_table.sym_push();
         if (is(TK.VAR)){
             declarations();
         }
@@ -43,6 +46,7 @@ public class Parser {
         while( is(TK.ID) ) {
             newSym = new Symbol(tok.lineNumber, table.depth, tok.string);
             table.addSym(newSym);
+            perm_table.addSym(newSym);
             scan();
         }
         mustbe(TK.RAV);
@@ -70,7 +74,7 @@ public class Parser {
         // you'll need to add some code here
         newSym = new Symbol(tok.lineNumber, table.depth, tok.string);
        // System.err.println( "variable " + newSym.name + " linenumber: " + newSym.dec_line + "address:" + newSym);
-        table.checkSym(newSym);
+        table.assign(newSym);
         scan();
         mustbe(TK.ASSIGN);
         expression();
@@ -221,5 +225,50 @@ public class Parser {
         System.err.println( "can't parse: line "
                             + tok.lineNumber + " " + msg );
         System.exit(1);
+    }
+    private void print_st(){
+        for(int i=0; i < perm_table.top().size(); i++){
+            System.err.println(perm_table.top().get(i).name + "\n declared on line " + perm_table.top().get(i).dec_line
+                + " at nesting depth " + perm_table.top().get(i).nesting_depth + "\n");
+            if (!(perm_table.top().get(i).assign_on.isEmpty())){
+                System.err.println(" assigned to on: ");
+                for (int j = 0; j < perm_table.top().get(i).assign_on.size(); j++ ){
+                    int count = 0;
+                    for(int k = 0; k < perm_table.top().get(i).assign_on.size(); k++){
+                        if(perm_table.top().get(i).assign_on.get(j) == perm_table.top().get(i).assign_on.get(k){
+                            count++;
+                        }
+                    }// for k
+                    if (count > 1){
+                        System.err.println(perm_table.top().get(i).assign_on.get(j) + "(" + count+ ") ");
+                    }
+                    else {System.err.println(perm_table.top().get(i).assign_on.get(j) + " ");}
+                }// for j
+                System.err.println("\n");
+            }//if assign_on not empty
+            else{
+                System.err.println(" never assigned\n");
+            }// else assign_on is empty
+
+            if (!(perm_table.top().get(i).used_on.isEmpty())){
+                System.err.println(" used on: ");
+                for (int j = 0; j < perm_table.top().get(i).assign_on.size(); j++ ){
+                    int count = 0;
+                    for(int k = 0; k < perm_table.top().get(i).assign_on.size(); k++){
+                        if(perm_table.top().get(i).assign_on.get(j) == perm_table.top().get(i).assign_on.get(k){
+                            count++;
+                        }
+                    }// for k
+                    if (count > 1){
+                        System.err.println(perm_table.top().get(i).assign_on.get(j) + "(" + count+ ") ");
+                    }
+                    else {System.err.println(perm_table.top().get(i).assign_on.get(j) + " ");}
+                }// for j
+                System.err.println("\n");
+            }//if used_on not empty
+            else{
+                System.err.println(" never used\n");
+            }// else used_on is empty
+        }// for print the symbols
     }
 }
