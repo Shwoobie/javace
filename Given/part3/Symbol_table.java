@@ -67,8 +67,8 @@ public class Symbol_table {
       if (newSym.nesting_depth > 0){
 
          Symbol tempSym = new Symbol(newSym.dec_line, newSym.nesting_depth, newSym.name);
-         Stack<Vector<Symbol>> tempSt = new Stack<Vector<Symbol>>();
-         tempSt = st;
+         Stack<Vector<Symbol>> tempSt = new Stack<Vector<Symbol>>(st);
+         //tempSt = st;
          if(!tempSt.empty()){
             do{
                for(int i = 0; i < (tempSt.peek()).size(); i++){
