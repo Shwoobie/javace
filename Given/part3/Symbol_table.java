@@ -63,6 +63,7 @@ public class Symbol_table {
             return true;
          }
          return false;
+      }
    }
 
 
