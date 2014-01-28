@@ -107,11 +107,12 @@ public class Symbol_table {
                         st.push(tempTable.pop());
                 //     System.err.println(tempTable.empty());
                      } //repopulate the original stack
+                     (sym_top().get(i)).used_on.addElement(newSym.dec_line);
                      return true;
 
                   }
           //     System.err.println( "CURRFALSE2 NAME " + newSym.name + " ITTFALSE2 NAME " + (sym_top().get(i)).name);
-               }
+               }//for
                
               // System.err.println(tempTable.empty());
                if(tempSym.nesting_depth != 0){
@@ -160,6 +161,7 @@ public class Symbol_table {
                         st.push(tempTable.pop());
                 //     System.err.println(tempTable.empty());
                      } //repopulate the original stack
+                     (sym_top().get(i)).assign_on.addElement(newSym.dec_line);
                      return true;
 
                   }
