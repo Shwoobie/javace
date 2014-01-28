@@ -28,7 +28,7 @@ public class Parser {
     private void program() {
         perm_table.sym_push();//**************
         block();
-        //print_st();//************
+        print_st();//************
     }
 
     private void block() {
@@ -78,8 +78,8 @@ public class Parser {
         // you'll need to add some code here
         newSym = new Symbol(tok.lineNumber, table.depth, tok.string);
        // System.err.println( "variable " + newSym.name + " linenumber: " + newSym.dec_line + "address:" + newSym);
-     //   table.assign_check(newSym);//***********
-        table.checkSym(newSym);
+        table.assign_check(newSym);//***********
+        //table.checkSym(newSym);
         scan();
         mustbe(TK.ASSIGN);
         expression();
@@ -111,8 +111,8 @@ public class Parser {
         scan();// skip fa
         if(is(TK.ID)){
         newSym = new Symbol(tok.lineNumber, table.depth, tok.string);
-       // table.assign_check(newSym);//**********
-        table.checkSym(newSym);
+        table.assign_check(newSym);//**********
+        //table.checkSym(newSym);
         }
         mustbe(TK.ID);
         mustbe(TK.ASSIGN);
@@ -232,7 +232,7 @@ public class Parser {
                             + tok.lineNumber + " " + msg );
         System.exit(1);
     }
-    /*private void print_st(){
+    private void print_st(){
         for(int i=0; i < perm_table.sym_top().size(); i++){
             System.err.print(perm_table.sym_top().get(i).name + "\n declared on line " + perm_table.sym_top().get(i).dec_line
                 + " at nesting depth " + perm_table.sym_top().get(i).nesting_depth + "\n");
