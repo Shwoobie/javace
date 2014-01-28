@@ -81,8 +81,10 @@ public class Symbol_table {
                System.err.println( "CURRFALSE2 NAME " + newSym.name + " ITTFALSE2 NAME " + (sym_top().get(i)).name);
                }
                tempTable.push(st.pop()); // transfer the stack contents to tempTable
-               tempSym.nesting_depth--;
-            }while(tempSym.nesting_depth > 0);
+               if(tempSym.nesting_depth != 0)
+                  tempSym.nesting_depth--;
+            }while(tempSym.nesting_depth >= 0);
+
             while(!tempTable.empty()){st.push(tempTable.pop());} //repopulate the original stack
       }
       }
