@@ -23,12 +23,13 @@ public class Parser {
         program();
         if( tok.kind != TK.EOF )
             parse_error("junk after logical end of program");
+        print_st();
     }
 
     private void program() {
         perm_table.sym_push();//**************
         block();
-        print_st();//************
+        //print_st();//************
     }
 
     private void block() {
