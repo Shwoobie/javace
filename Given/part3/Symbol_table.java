@@ -17,6 +17,7 @@ public class Symbol_table {
    public void sym_pop() {
       if(!st.empty()){
          st.pop();
+         System.err.println(st.empty());
          return;
       }
 
