@@ -75,23 +75,23 @@ public class Symbol_table {
             do{
                for(int i = 0; i < (st.peek()).size(); i++){
            //    System.err.println( "CURRENT NAME " + newSym.name + " ITT NAME " + (sym_top().get(i)).name);
-               if((tempSym.name).equals((st.peek()).get(i).name)){
+                  if((tempSym.name).equals((st.peek()).get(i).name)){
            //       System.err.println( "RETURN TRUE2");
-                  while(!tempTable.empty()){
-                     st.push(tempTable.pop());
+                     while(!tempTable.empty()){
+                        st.push(tempTable.pop());
                 //     System.err.println(tempTable.empty());
-                  } //repopulate the original stack
-                  return true;
+                     } //repopulate the original stack
+                     return true;
 
-               }
+                  }
           //     System.err.println( "CURRFALSE2 NAME " + newSym.name + " ITTFALSE2 NAME " + (sym_top().get(i)).name);
                }
                
               // System.err.println(tempTable.empty());
                if(tempSym.nesting_depth != 0){
                   tempTable.push(st.pop()); // transfer the stack contents to tempTable
-                  tempSym.nesting_depth--;
                }
+               tempSym.nesting_depth--;
                   
             }while(tempSym.nesting_depth >= 0);
 
