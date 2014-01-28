@@ -230,7 +230,7 @@ public class Parser {
                             + tok.lineNumber + " " + msg );
         System.exit(1);
     }
-    private void print_st(){
+    /*private void print_st(){
         for(int i=0; i < perm_table.sym_top().size(); i++){
             System.err.print(perm_table.sym_top().get(i).name + "\n declared on line " + perm_table.sym_top().get(i).dec_line
                 + " at nesting depth " + perm_table.sym_top().get(i).nesting_depth + "\n");
@@ -282,6 +282,7 @@ public class Parser {
             else{
                 System.err.print(" never used\n");
             }// else used_on is empty
-        }// for print the symbols
-    }
+        }// for print the symbols       
+    }*/
+
 }
