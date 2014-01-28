@@ -64,9 +64,9 @@ public class Symbol_table {
       else{
          if(!st.empty()){
             sym_top().addElement(newSym);
-            return true;
+            
          }
-      }
+      }return true;
    }
 
    public boolean shallow_compare(Symbol newSym) {
