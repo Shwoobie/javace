@@ -50,8 +50,9 @@ public class Parser {
         mustbe(TK.VAR);
         while( is(TK.ID) ) {
             newSym = new Symbol(tok.lineNumber, table.depth, tok.string);
-            table.addSym(newSym);
-            perm_table.sym_top().addElement(newSym);//**********
+            if(table.addSym(newSym)){
+                perm_table.sym_top().addElement(newSym);//**********
+            }
             scan();
         }
         mustbe(TK.RAV);
