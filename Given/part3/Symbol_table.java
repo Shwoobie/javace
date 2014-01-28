@@ -64,7 +64,7 @@ public class Symbol_table {
       }
 
       if (newSym.nesting_depth > 0){
-         System.err.println("did you go into the if loop?")
+         System.err.println("did you go into the if loop?");
          Symbol tempSym = new Symbol(newSym.dec_line, newSym.nesting_depth, newSym.name);
          Stack<Vector<Symbol>> tempSt = new Stack<Vector<Symbol>>();
          tempSt = st;
