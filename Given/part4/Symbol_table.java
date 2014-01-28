@@ -86,6 +86,7 @@ public class Symbol_table {
        //  System.err.println( "current name " + newSym.name + " itt name " + (sym_top().get(i)).name);
          if((newSym.name).equals((sym_top().get(i)).name)){
           //  System.err.println( "RETURN TRUE");
+            (sym_top().get(i)).used_on.addElement(newSym.dec_line);
             return true;
          }
        //  System.err.println( "CURRFALSE NAME " + newSym.name + " ITTFALSE NAME " + (sym_top().get(i)).name);
