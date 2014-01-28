@@ -107,7 +107,7 @@ public class Symbol_table {
                         st.push(tempTable.pop());
                 //     System.err.println(tempTable.empty());
                      } //repopulate the original stack
-                     (st.peek()).get(i)).used_on.addElement(newSym.dec_line);
+                     (st.peek()).get(i).used_on.addElement(newSym.dec_line);
                      return true;
 
                   }
@@ -161,7 +161,7 @@ public class Symbol_table {
                         st.push(tempTable.pop());
                 //     System.err.println(tempTable.empty());
                      } //repopulate the original stack
-                     (st.peek().get(i)).assign_on.addElement(newSym.dec_line);
+                     st.peek().get(i).assign_on.addElement(newSym.dec_line);
                      return true;
 
                   }
