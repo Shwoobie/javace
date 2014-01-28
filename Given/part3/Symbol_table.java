@@ -52,12 +52,12 @@ public class Symbol_table {
 
    public boolean compare(Symbol newSym) {//compares names in the vector 
       for(int i = 0; (i < sym_top().size()) || i == 0; i++){
-         //System.err.println( "current name " + newSym.name + " itt name " + (sym_top().get(i)).name);
+         System.err.println( "current name " + newSym.name + " itt name " + (sym_top().get(i)).name);
          if((newSym.name).equals((sym_top().get(i)).name)){
-            //System.err.println( "RETURN TRUE");
+            System.err.println( "RETURN TRUE");
             return true;
          }
-        // System.err.println( "CURRFALSE NAME " + newSym.name + " ITTFALSE NAME " + (sym_top().get(i)).name);
+         System.err.println( "CURRFALSE NAME " + newSym.name + " ITTFALSE NAME " + (sym_top().get(i)).name);
       }
 
       if (newSym.nesting_depth > 0){
@@ -67,12 +67,12 @@ public class Symbol_table {
          if(!tempSt.empty()){
             do{
                for(int i = 0; i < (tempSt.peek()).size() || i == 0; i++){
-              // System.err.println( "CURRENT NAME " + newSym.name + " ITT NAME " + (sym_top().get(i)).name);
+               System.err.println( "CURRENT NAME " + newSym.name + " ITT NAME " + (sym_top().get(i)).name);
                if((tempSym.name).equals((tempSt.peek()).get(i).name)){
-                //  System.err.println( "RETURN TRUE2");
+                  System.err.println( "RETURN TRUE2");
                   return true;
                }
-              // System.err.println( "CURRFALSE2 NAME " + newSym.name + " ITTFALSE2 NAME " + (sym_top().get(i)).name);
+               System.err.println( "CURRFALSE2 NAME " + newSym.name + " ITTFALSE2 NAME " + (sym_top().get(i)).name);
                }
                tempSt.pop();
                tempSym.nesting_depth--;
@@ -80,7 +80,7 @@ public class Symbol_table {
       }
 
       }
-    //  System.err.println( "RETURN FALSE");
+      System.err.println( "RETURN FALSE");
       return false;
 
    }
