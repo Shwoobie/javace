@@ -199,7 +199,7 @@ public class Parser {
 
     private void simple() {
         // you'll need to add some code here
-        System.err.print(" (";//******************
+        System.err.print(" (");//******************
         term();
         while(is(TK.PLUS) || is(TK.MINUS)){
             addop();
