@@ -140,13 +140,14 @@ public class Parser {
         if (is(TK.ST)){
            // System.err.print(" ||");//********** 
             scan();//skip ST
-
             System.err.print("&& (1 ||");//********** 
             expression();
             System.err.print(")");//********** 
+            command_for();//***************was prev commands()
         }
         System.err.print("; x_"+ id_name +"++)");//********** 
-        command_for();//***************was prev commands()
+        else
+            commands();
         mustbe(TK.AF);
     }
 
@@ -204,7 +205,7 @@ public class Parser {
         for(int i=0; i < vec.size(); i++){//*************
             System.err.print(vec.get(i));//**********
         }//**********
-        System.err.print(") continue;");//**********
+        System.err.println(") continue;");//**********
         vec.clear();//**********     
         table.depth++;
         block();
