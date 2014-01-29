@@ -9,6 +9,7 @@ public class Parser {
     // tok is global to all these parsing methods;
     // scan just calls the scanner's scan method and saves the result in tok.
     private Token tok; // the current token
+    Vector<String> vec = new Vector<String>(); // forsuch that
     Symbol_table table = new Symbol_table();
     Symbol_table perm_table = new Symbol_table(); 
     Symbol newSym;//symbol object for making IDs to put in the symbol table after declaration
@@ -136,12 +137,13 @@ public class Parser {
         System.out.print("; x_"+id_name + " <=");//********** 
         expression();
         if (is(TK.ST)){
-            System.out.print(" ||");//********** 
+           // System.out.print(" ||");//********** 
             scan();//skip ST
+            vec.clear();//***************
             expression();
         }
         System.out.print("; x_"+ id_name +"++)");//********** 
-        commands();
+        command_for();//***************was prev commands()
         mustbe(TK.AF);
     }
 
@@ -191,6 +193,21 @@ public class Parser {
         System.out.println("}");//********** 
     }
 
+    private void command_for(Vector<String> vec) {
+        // you'll need to add some code here
+        mustbe(TK.ARROW);
+        System.out.println("{");//********** 
+        System.out.println("if(0 ==");//**********
+        for(int i=0; i < vec.size(); i++){//*************
+            System.out.println(vec.get(i));//**********
+        }//**********
+        System.out.println(") continue;");//**********
+        vec.clear();//**********     
+        table.depth++;
+        block();
+        System.out.println("}");//********** 
+    }
+
     private void expression() {
         // you'll need to add some code here
         //System.out.print(" (");//********** 
@@ -205,41 +222,49 @@ public class Parser {
     private void simple() {
         // you'll need to add some code here
         System.out.print(" (");//******************
+        vec.addElement(" (");//*************************
         term();
         while(is(TK.PLUS) || is(TK.MINUS)){
             addop();
             term();
         }
         System.out.print(" )");//******************
+        vec.addElement(")");//*************************
     }
 
     private void term() {
         // you'll need to add some code here
         System.out.print(" (");//********** 
+        vec.addElement("(");//*************************
         factor();
         while(is(TK.TIMES) || is(TK.DIVIDE)){
             multop();
             factor();
         }
         System.out.print(" )");//********** 
+        vec.addElement(")");//*************************
     }
 
     private void factor() {
         // you'll need to add some code here
         if(is(TK.LPAREN)){
             System.out.print(" (");//********** 
+            vec.addElement("(");//*************************
             scan();
             expression();
             System.out.print(" )");//********** 
+            vec.addElement(")");//*************************
             mustbe(TK.RPAREN);
         }
         else if(is(TK.ID)){ 
             newSym = new Symbol(tok.lineNumber, table.depth, tok.string);
             table.checkSym(newSym); //prints in the compare
+            vec.addElement(tok.string);//*************************
             scan();
         }
         else if(is(TK.NUM)){ 
             System.out.print(" "+tok.string);//**********
+            vec.addElement(tok.string);//*************************
             scan();
              
         }
@@ -248,26 +273,46 @@ public class Parser {
 
     private void relop() {
         // you'll need to add some code here
-        if(is(TK.NE)) {System.out.print(" !=");}//********** 
-        else if(is(TK.EQ)) {System.out.print(" ==");}//&************
-        else if(is(TK.GT)) {System.out.print(" >");}//********** 
-        else if(is(TK.LT)) {System.out.print(" <");}//********** 
-        else if(is(TK.GE)) {System.out.print(" >=");}//**********
-        else if(is(TK.LE)) {System.out.print(" <=");}//**********  
+        if(is(TK.NE)) {System.out.print(" !=");
+            vec.addElement("!=");//*************************
+        }//********** 
+        else if(is(TK.EQ)) {System.out.print(" ==");
+            vec.addElement(" ==");//*************************
+        }//&************
+        else if(is(TK.GT)) {System.out.print(" >");
+            vec.addElement(">");//*************************
+        }//********** 
+        else if(is(TK.LT)) {System.out.print(" <");
+            vec.addElement("<");//*************************
+        }//********** 
+        else if(is(TK.GE)) {System.out.print(" >=");
+            vec.addElement(" >=");//*************************
+        }//**********
+        else if(is(TK.LE)) {System.out.print(" <=");
+            vec.addElement("<=");//*************************
+        }//**********  
         scan();
     }
 
     private void addop() {
         // you'll need to add some code here
-        if(is(TK.MINUS)) {System.out.print(" -");}//**********
-        if(is(TK.PLUS)) {System.out.print(" +");}//**********  
+        if(is(TK.MINUS)) {System.out.print(" -");
+            vec.addElement(" -");//*************************
+        }//**********
+        if(is(TK.PLUS)) {System.out.print(" +");
+            vec.addElement(" +");//*************************
+        }//**********  
         scan();
     }
 
     private void multop() {
         // you'll need to add some code here
-        if(is(TK.TIMES)) {System.out.print(" *");}//********** 
-        if(is(TK.DIVIDE)) {System.out.print(" /");}//********** 
+        if(is(TK.TIMES)) {System.out.print(" *");
+            vec.addElement(" *");//*************************
+        }//********** 
+        if(is(TK.DIVIDE)) {System.out.print(" /");
+            vec.addElement(" /");//*************************
+        }//********** 
         scan();
     }
     // you'll need to add a bunch of methods here
