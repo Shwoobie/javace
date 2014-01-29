@@ -199,11 +199,11 @@ public class Parser {
         // you'll need to add some code here
         mustbe(TK.ARROW);
         System.err.println("{");//********** 
-        System.err.println("if(0 ==");//***********
+        System.err.print("if(0 ==");//***********
         for(int i=0; i < vec.size(); i++){//*************
             System.err.println(vec.get(i));//**********
         }//**********
-        System.err.println(") continue;");//**********
+        System.err.print(") continue;");//**********
         vec.clear();//**********     
         table.depth++;
         block();
