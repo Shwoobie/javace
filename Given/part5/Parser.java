@@ -121,7 +121,7 @@ public class Parser {
     private void fa() {
         // you'll need to add some code here
         scan();// skip fa
-        System.out.print("for(");//********** 
+        System.err.print("for(");//********** 
         if(is(TK.ID)){
         newSym = new Symbol(tok.lineNumber, table.depth, tok.string);
         table.assign_check(newSym);
@@ -129,18 +129,18 @@ public class Parser {
         }
         String id_name = tok.string;//******************
         mustbe(TK.ID);
-        System.out.print(" =");//********** 
+        System.err.print(" =");//********** 
         mustbe(TK.ASSIGN);
         expression();
         mustbe(TK.TO);
-        System.out.print("; "+id_name + " <");//********** 
+        System.err.print("; "+id_name + " <");//********** 
         expression();
         if (is(TK.ST)){
-            System.out.print(" &&");//********** 
+            System.err.print(" &&");//********** 
             scan();//skip ST
             expression();
         }
-        System.out.print("; "+ id_name +"++)");//********** 
+        System.err.print("; "+ id_name +"++)");//********** 
         commands();
         mustbe(TK.AF);
     }
