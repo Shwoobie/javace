@@ -145,9 +145,11 @@ public class Parser {
             System.err.print(")");//********** 
             command_for();//***************was prev commands()
         }
-        System.err.print("; x_"+ id_name +"++)");//********** 
-        else
+        
+        else{
             commands();
+        }
+        System.err.print("; x_"+ id_name +"++)");//********** 
         mustbe(TK.AF);
     }
 
