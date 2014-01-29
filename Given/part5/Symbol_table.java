@@ -90,7 +90,7 @@ public class Symbol_table {
          if((newSym.name).equals((sym_top().get(i)).name)){
           //  System.err.println( "RETURN TRUE");
             (sym_top().get(i)).used_on.addElement(newSym.dec_line);
-            System.err.print(" x_"+sym_top().get(i).name);//******************
+            System.out.print(" x_"+sym_top().get(i).name);//******************
             return true;
          }
        //  System.err.println( "CURRFALSE NAME " + newSym.name + " ITTFALSE NAME " + (sym_top().get(i)).name);
@@ -108,7 +108,7 @@ public class Symbol_table {
                   if((tempSym.name).equals((st.peek()).get(i).name)){
            //       System.err.println( "RETURN TRUE2");
                     (st.peek()).get(i).used_on.addElement(newSym.dec_line);
-                    System.err.print(" x_"+sym_top().get(i).name);//******************
+                    System.out.print(" x_"+sym_top().get(i).name);//******************
                      while(!tempTable.empty()){
                         st.push(tempTable.pop());
                 //     System.err.println(tempTable.empty());
@@ -146,7 +146,7 @@ public class Symbol_table {
          if((newSym.name).equals((sym_top().get(i)).name)){
           //  System.err.println( "RETURN TRUE");
             (sym_top().get(i)).assign_on.addElement(newSym.dec_line);
-            System.err.print("x_"+sym_top().get(i).name + " =");//********** 
+            System.out.print("x_"+sym_top().get(i).name + " =");//********** 
             //add the line number to the used_on vector 
             return true;
          }
@@ -165,7 +165,7 @@ public class Symbol_table {
                   if((tempSym.name).equals((st.peek()).get(i).name)){
            //       System.err.println( "RETURN TRUE2");
                     st.peek().get(i).assign_on.addElement(newSym.dec_line);
-                    System.err.print("x_"+sym_top().get(i).name + " =");//**********
+                    System.out.print("x_"+sym_top().get(i).name + " =");//**********
                     while(!tempTable.empty()){
                       st.push(tempTable.pop());
                 //     System.err.println(tempTable.empty());

@@ -28,9 +28,9 @@ public class Parser {
 
     private void program() {
         perm_table.sym_push();
-        System.err.println("#include<stdio.h>\nmain(){");//**********
+        System.out.println("#include<stdio.h>\nmain(){");//**********
         block();
-        System.err.println("}");//**********
+        System.out.println("}");//**********
     }
 
     private void block() {
@@ -89,22 +89,22 @@ public class Parser {
         scan();
         mustbe(TK.ASSIGN);
         expression();
-        System.err.println(";");//********** 
+        System.out.println(";");//********** 
 
     }
 
     private void print() {
         // you'll need to add some code here
-        System.err.print("printf(\"%d\\n\",");//********** 
+        System.out.print("printf(\"%d\\n\",");//********** 
         scan();
         expression();
-        System.err.println(");");//********** 
+        System.out.println(");");//********** 
     }
 
     private void if_fn() {
         // you'll need to add some code here
         scan();//skip if
-        System.err.print("if(");//********** 
+        System.out.print("if(");//********** 
         guarded_commands();
         mustbe(TK.FI);
         //System.err.println("\n}");//********** 
@@ -113,7 +113,7 @@ public class Parser {
     private void do_fn() { // while loop
         // you'll need to add some code here
         scan();//skip do
-        System.err.print("while(");//********** 
+        System.out.print("while(");//********** 
         guarded_commands_do();
         mustbe(TK.OD);
     }
@@ -121,7 +121,7 @@ public class Parser {
     private void fa() {
         // you'll need to add some code here
         scan();// skip fa
-        if(is(TK.NE)) {System.err.print(" != ");}//********** 
+        if(is(TK.NE)) {System.out.print(" != ");}//********** 
         if(is(TK.ID)){
         newSym = new Symbol(tok.lineNumber, table.depth, tok.string);
         table.assign_check(newSym);
@@ -145,12 +145,12 @@ public class Parser {
         guarded_command();
         while(is(TK.BOX)){ // else if
             scan();
-            System.err.print("else if(");//********** 
+            System.out.print("else if(");//********** 
             guarded_command();
         }
         if (is(TK.ELSE)){
             scan();
-            System.err.println("else");//********** 
+            System.out.println("else");//********** 
             commands();
         }
     }
@@ -159,12 +159,12 @@ public class Parser {
         guarded_command();
         while(is(TK.BOX)){ // else if
             scan(); // skip box
-            System.err.print("while(");//********** 
+            System.out.print("while(");//********** 
             guarded_command();
         }
         if (is(TK.ELSE)){
             scan();
-            System.err.println("while(true)");//********** 
+            System.out.println("while(true)");//********** 
             commands();
         }
     }
@@ -173,17 +173,17 @@ public class Parser {
         // you'll need to add some code here
         
         expression();
-        System.err.println(" )");//********** 
+        System.out.println(" )");//********** 
         commands();
     }
 
     private void commands() {
         // you'll need to add some code here
         mustbe(TK.ARROW);
-        System.err.println("{");//********** 
+        System.out.println("{");//********** 
         table.depth++;
         block();
-        System.err.println("}");//********** 
+        System.out.println("}");//********** 
     }
 
     private void expression() {
@@ -199,33 +199,33 @@ public class Parser {
 
     private void simple() {
         // you'll need to add some code here
-        System.err.print(" (");//******************
+        System.out.print(" (");//******************
         term();
         while(is(TK.PLUS) || is(TK.MINUS)){
             addop();
             term();
         }
-        System.err.print(" )");//******************
+        System.out.print(" )");//******************
     }
 
     private void term() {
         // you'll need to add some code here
-        System.err.print(" (");//********** 
+        System.out.print(" (");//********** 
         factor();
         while(is(TK.TIMES) || is(TK.DIVIDE)){
             multop();
             factor();
         }
-        System.err.print(" )");//********** 
+        System.out.print(" )");//********** 
     }
 
     private void factor() {
         // you'll need to add some code here
         if(is(TK.LPAREN)){
-            System.err.print(" (");//********** 
+            System.out.print(" (");//********** 
             scan();
             expression();
-            System.err.print(" )");//********** 
+            System.out.print(" )");//********** 
             mustbe(TK.RPAREN);
         }
         else if(is(TK.ID)){ 
@@ -234,7 +234,7 @@ public class Parser {
             scan();
         }
         else if(is(TK.NUM)){ 
-            System.err.print(" "+tok.string);//**********
+            System.out.print(" "+tok.string);//**********
             scan();
              
         }
@@ -243,26 +243,26 @@ public class Parser {
 
     private void relop() {
         // you'll need to add some code here
-        if(is(TK.NE)) {System.err.print(" !=");}//********** 
-        else if(is(TK.EQ)) {System.err.print(" ==");}//&************
-        else if(is(TK.GT)) {System.err.print(" >");}//********** 
-        else if(is(TK.LT)) {System.err.print(" <");}//********** 
-        else if(is(TK.GE)) {System.err.print(" >=");}//**********
-        else if(is(TK.LE)) {System.err.print(" <=");}//**********  
+        if(is(TK.NE)) {System.out.print(" !=");}//********** 
+        else if(is(TK.EQ)) {System.out.print(" ==");}//&************
+        else if(is(TK.GT)) {System.out.print(" >");}//********** 
+        else if(is(TK.LT)) {System.out.print(" <");}//********** 
+        else if(is(TK.GE)) {System.out.print(" >=");}//**********
+        else if(is(TK.LE)) {System.out.print(" <=");}//**********  
         scan();
     }
 
     private void addop() {
         // you'll need to add some code here
-        if(is(TK.MINUS)) {System.err.print(" -");}//**********
-        if(is(TK.PLUS)) {System.err.print(" +");}//**********  
+        if(is(TK.MINUS)) {System.out.print(" -");}//**********
+        if(is(TK.PLUS)) {System.out.print(" +");}//**********  
         scan();
     }
 
     private void multop() {
         // you'll need to add some code here
-        if(is(TK.TIMES)) {System.err.print(" *");}//********** 
-        if(is(TK.DIVIDE)) {System.err.print(" /");}//********** 
+        if(is(TK.TIMES)) {System.out.print(" *");}//********** 
+        if(is(TK.DIVIDE)) {System.out.print(" /");}//********** 
         scan();
     }
     // you'll need to add a bunch of methods here
