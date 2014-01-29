@@ -121,21 +121,26 @@ public class Parser {
     private void fa() {
         // you'll need to add some code here
         scan();// skip fa
-        if(is(TK.NE)) {System.out.print(" != ");}//********** 
+        System.out.print("for(");//********** 
         if(is(TK.ID)){
         newSym = new Symbol(tok.lineNumber, table.depth, tok.string);
         table.assign_check(newSym);
         //table.checkSym(newSym);
         }
+        String id_name = tok.string;//******************
         mustbe(TK.ID);
+        System.out.print(" =");//********** 
         mustbe(TK.ASSIGN);
         expression();
         mustbe(TK.TO);
+        System.out.print("; "+id_name + " <");//********** 
         expression();
         if (is(TK.ST)){
+            System.out.print(" &&");//********** 
             scan();//skip ST
             expression();
         }
+        System.out.print("; "+ id_name +"++)");//********** 
         commands();
         mustbe(TK.AF);
     }
@@ -173,7 +178,7 @@ public class Parser {
         // you'll need to add some code here
         
         expression();
-        System.out.println(" )");//********** 
+        System.out.println(")");//********** 
         commands();
     }
 
