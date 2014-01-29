@@ -107,7 +107,7 @@ public class Parser {
         System.err.print("if(");//********** 
         guarded_commands();
         mustbe(TK.FI);
-        System.err.println("\n}");//********** 
+        //System.err.println("\n}");//********** 
     }
 
     private void do_fn() { // while loop
