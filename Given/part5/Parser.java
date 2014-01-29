@@ -143,13 +143,16 @@ public class Parser {
             System.err.print("&& (1 ||");//********** 
             expression();
             System.err.print(")");//********** 
+            System.err.print("; x_"+ id_name +"++)");//********** 
             command_for();//***************was prev commands()
+
         }
         
         else{
             commands();
+            System.err.print("; x_"+ id_name +"++)");//********** 
         }
-        System.err.print("; x_"+ id_name +"++)");//********** 
+
         mustbe(TK.AF);
     }
 
