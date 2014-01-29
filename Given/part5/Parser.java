@@ -23,7 +23,7 @@ public class Parser {
         program();
         if( tok.kind != TK.EOF )
             parse_error("junk after logical end of program");
-        //print_st();//********** TEMPORARILY TAKING THIS OUT FOR TESTING
+        print_st();//********** TEMPORARILY TAKING THIS OUT FOR TESTING
     }
 
     private void program() {
