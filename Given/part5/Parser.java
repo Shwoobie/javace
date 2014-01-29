@@ -201,7 +201,7 @@ public class Parser {
         System.err.println("{");//********** 
         System.err.print("if(0 ==");//***********
         for(int i=0; i < vec.size(); i++){//*************
-            System.err.println(vec.get(i));//**********
+            System.err.print(vec.get(i));//**********
         }//**********
         System.err.print(") continue;");//**********
         vec.clear();//**********     
