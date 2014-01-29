@@ -136,10 +136,11 @@ public class Parser {
         mustbe(TK.TO);
         System.err.print("; x_"+id_name + " <=");//********** 
         expression();
+        vec.clear();//***************
         if (is(TK.ST)){
            // System.err.print(" ||");//********** 
             scan();//skip ST
-            vec.clear();//***************
+
             System.err.print("&& (1 ||");//********** 
             expression();
             System.err.print(")");//********** 
