@@ -234,7 +234,7 @@ public class Parser {
             scan();
         }
         else if(is(TK.NUM)){ 
-            System.err.print(" "+table.sym_top().lastElement().name);//**********
+            System.err.print(" "+tok.string);//**********
             scan();
              
         }
