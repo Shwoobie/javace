@@ -49,16 +49,16 @@ public class Parser {
 
     private void declarations() {
         mustbe(TK.VAR);
-        System.err.println("int");//********** 
+        //System.err.println("int");//********** 
         while( is(TK.ID) ) {
             newSym = new Symbol(tok.lineNumber, table.depth, tok.string);
             if(table.addSym(newSym)){
-                System.err.print(" x_"+ table.sym_top().lastElement().name);//********** 
+                System.err.println("int x_"+ table.sym_top().lastElement().name+";");//********** 
                 perm_table.sym_top().addElement(newSym);
             }
             scan();
         }
-        System.err.println(";");//********** 
+        //System.err.println(";");//********** 
         mustbe(TK.RAV);
 
     }
@@ -235,7 +235,7 @@ public class Parser {
         }
         else if(is(TK.NUM)){ 
             scan();
-            System.err.print(" "+TK.NUM);//********** 
+            System.err.print(" "+table.sym_top().lastElement().name);//********** 
         }
         else{parse_error("factor");}
     }
