@@ -247,7 +247,7 @@ public class Parser {
         else if(is(TK.GT)) {System.err.print(" >");}//********** 
         else if(is(TK.LT)) {System.err.print(" <");}//********** 
         else if(is(TK.GE)) {System.err.print(" >=");}//**********
-        else if(is(TK.GL)) {System.err.print(" <=");}//**********  
+        else if(is(TK.LE)) {System.err.print(" <=");}//**********  
         scan();
     }
 
