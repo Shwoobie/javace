@@ -205,7 +205,7 @@ public class Parser {
         vec.clear();//**********     
         table.depth++;
         block();
-        System.out.println("}");//********** 
+        System.out.println("}");//********* 
     }
 
     private void expression() {
