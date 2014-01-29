@@ -53,7 +53,7 @@ public class Parser {
         while( is(TK.ID) ) {
             newSym = new Symbol(tok.lineNumber, table.depth, tok.string);
             if(table.addSym(newSym)){
-                System.err.println("int x_"+ table.sym_top().lastElement().name+";");//********** 
+                System.out.println("int x_"+ table.sym_top().lastElement().name+";");//********** 
                 perm_table.sym_top().addElement(newSym);
             }
             scan();
