@@ -10,7 +10,7 @@ public class Parser {
     // scan just calls the scanner's scan method and saves the result in tok.
     private Token tok; // the current token
     Symbol_table table = new Symbol_table();
-    Symbol_table perm_table = new Symbol_table(); //***************
+    Symbol_table perm_table = new Symbol_table(); 
     Symbol newSym;//symbol object for making IDs to put in the symbol table after declaration
     private void scan() {
         tok = scanner.scan();
@@ -23,13 +23,14 @@ public class Parser {
         program();
         if( tok.kind != TK.EOF )
             parse_error("junk after logical end of program");
-        print_st();
+        //print_st();//********** TEMPORARILY TAKING THIS OUT FOR TESTING
     }
 
     private void program() {
-        perm_table.sym_push();//**************
+        perm_table.sym_push();
+        System.err.println("#include<stdio.h>\nmain(){");//**********
         block();
-        //print_st();//************
+        System.err.println("}");//**********
     }
 
     private void block() {
@@ -51,7 +52,7 @@ public class Parser {
         while( is(TK.ID) ) {
             newSym = new Symbol(tok.lineNumber, table.depth, tok.string);
             if(table.addSym(newSym)){
-                perm_table.sym_top().addElement(newSym);//**********
+                perm_table.sym_top().addElement(newSym);
             }
             scan();
         }
@@ -80,7 +81,7 @@ public class Parser {
         // you'll need to add some code here
         newSym = new Symbol(tok.lineNumber, table.depth, tok.string);
        // System.err.println( "variable " + newSym.name + " linenumber: " + newSym.dec_line + "address:" + newSym);
-        table.assign_check(newSym);//***********
+        table.assign_check(newSym);
         //table.checkSym(newSym);
         scan();
         mustbe(TK.ASSIGN);
@@ -113,7 +114,7 @@ public class Parser {
         scan();// skip fa
         if(is(TK.ID)){
         newSym = new Symbol(tok.lineNumber, table.depth, tok.string);
-        table.assign_check(newSym);//**********
+        table.assign_check(newSym);
         //table.checkSym(newSym);
         }
         mustbe(TK.ID);
