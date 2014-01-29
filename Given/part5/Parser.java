@@ -129,7 +129,7 @@ public class Parser {
         }
         String id_name = new String(tok.string);//******************
         mustbe(TK.ID); 
-        System.err.print(" =");//********** 
+        //System.err.print(" =");//********** 
         mustbe(TK.ASSIGN);
         expression();
         mustbe(TK.TO);
