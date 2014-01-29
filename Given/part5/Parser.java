@@ -159,7 +159,7 @@ public class Parser {
         // you'll need to add some code here
         guarded_command();
         while(is(TK.BOX)){ // else if
-            scan();
+            scan(); // skip box
             System.err.print("while(");//********** 
             guarded_command();
         }
@@ -234,8 +234,9 @@ public class Parser {
             scan();
         }
         else if(is(TK.NUM)){ 
+            System.err.print(" "+table.sym_top().lastElement().name);//**********
             scan();
-            System.err.print(" "+table.sym_top().lastElement().name);//********** 
+             
         }
         else{parse_error("factor");}
     }
