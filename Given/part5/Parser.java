@@ -127,8 +127,8 @@ public class Parser {
         table.assign_check(newSym);
         //table.checkSym(newSym);
         }
-        String id_name = tok.string;//******************
-        mustbe(TK.ID);
+        String id_name = new String(tok.string);//******************
+        mustbe(TK.ID); 
         System.err.print(" =");//********** 
         mustbe(TK.ASSIGN);
         expression();
