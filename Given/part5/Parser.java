@@ -95,7 +95,7 @@ public class Parser {
 
     private void print() {
         // you'll need to add some code here
-        System.err.print("printf(");//********** 
+        System.err.print("printf(\"%d\\n\"");//********** 
         scan();
         expression();
         System.err.println(");");//********** 
@@ -199,11 +199,13 @@ public class Parser {
 
     private void simple() {
         // you'll need to add some code here
+        System.err.print(" (";//******************
         term();
         while(is(TK.PLUS) || is(TK.MINUS)){
             addop();
             term();
         }
+        System.err.print(" )");//******************
     }
 
     private void term() {
