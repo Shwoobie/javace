@@ -84,8 +84,7 @@ public class Parser {
         // you'll need to add some code here
         newSym = new Symbol(tok.lineNumber, table.depth, tok.string);
        // System.err.println( "variable " + newSym.name + " linenumber: " + newSym.dec_line + "address:" + newSym);
-        table.assign_check(newSym);
-        System.err.print("x_"+table.sym_top().lastElement().name + " = ");//********** 
+        table.assign_check(newSym); //print in the assign
         //table.checkSym(newSym);
         scan();
         mustbe(TK.ASSIGN);
@@ -229,8 +228,7 @@ public class Parser {
         }
         else if(is(TK.ID)){ 
             newSym = new Symbol(tok.lineNumber, table.depth, tok.string);
-            table.checkSym(newSym);
-            System.err.print(" x_"+table.sym_top().lastElement().name);//********** 
+            table.checkSym(newSym); //prints in the compare
             scan();
         }
         else if(is(TK.NUM)){ 
