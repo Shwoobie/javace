@@ -149,8 +149,8 @@ public class Parser {
         }
         
         else{
-            commands();
             System.err.print("; x_"+ id_name +"++)");//********** 
+            commands();
         }
 
         mustbe(TK.AF);
