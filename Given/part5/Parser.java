@@ -193,19 +193,19 @@ public class Parser {
         System.out.println("}");//********** 
     }
 
-    private void command_for(Vector<String> vec) {
+    private void command_for() {
         // you'll need to add some code here
         mustbe(TK.ARROW);
         System.out.println("{");//********** 
-        System.out.println("if(0 ==");//**********
+        System.out.println("if(0 ==");//***********
         for(int i=0; i < vec.size(); i++){//*************
             System.out.println(vec.get(i));//**********
         }//**********
-        System.out.println(") continue;");//***********
+        System.out.println(") continue;");//**********
         vec.clear();//**********     
         table.depth++;
         block();
-        System.out.println("}");//********* 
+        System.out.println("}");//********** 
     }
 
     private void expression() {
