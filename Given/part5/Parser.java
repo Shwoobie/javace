@@ -136,7 +136,7 @@ public class Parser {
         System.out.print("; x_"+id_name + " <=");//********** 
         expression();
         if (is(TK.ST)){
-            System.out.print(" &&");//********** 
+            System.out.print(" ||");//********** 
             scan();//skip ST
             expression();
         }
