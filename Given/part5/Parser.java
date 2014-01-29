@@ -53,7 +53,7 @@ public class Parser {
         while( is(TK.ID) ) {
             newSym = new Symbol(tok.lineNumber, table.depth, tok.string);
             if(table.addSym(newSym)){
-                System.out.println("int x_"+ table.sym_top().lastElement().name+";");//********** 
+                System.out.println("int x_"+ table.sym_top().lastElement().name+" = -12345;");//********** 
                 perm_table.sym_top().addElement(newSym);
             }
             scan();
