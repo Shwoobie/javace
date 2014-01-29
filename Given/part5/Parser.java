@@ -133,7 +133,7 @@ public class Parser {
         mustbe(TK.ASSIGN);
         expression();
         mustbe(TK.TO);
-        System.out.print("; x_"+id_name + " <");//********** 
+        System.out.print("; x_"+id_name + " <=");//********** 
         expression();
         if (is(TK.ST)){
             System.out.print(" &&");//********** 
