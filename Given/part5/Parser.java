@@ -122,7 +122,7 @@ public class Parser {
     private void fa() {
         // you'll need to add some code here
         scan();// skip fa
-        if(is.(TK.NE)) {System.err.print(" != ");}//********** 
+        if(is(TK.NE)) {System.err.print(" != ");}//********** 
         if(is(TK.ID)){
         newSym = new Symbol(tok.lineNumber, table.depth, tok.string);
         table.assign_check(newSym);
@@ -242,26 +242,26 @@ public class Parser {
 
     private void relop() {
         // you'll need to add some code here
-        if(is.(TK.NE)) {System.err.print(" !=");}//********** 
-        else if(is.(TK.EQ)) {System.err.print(" ==");}//&************
-        else if(is.(TK.GT)) {System.err.print(" >");}//********** 
-        else if(is.(TK.LT)) {System.err.print(" <");}//********** 
-        else if(is.(TK.GE)) {System.err.print(" >=");}//**********
-        else if(is.(TK.GL)) {System.err.print(" <=");}//**********  
+        if(is(TK.NE)) {System.err.print(" !=");}//********** 
+        else if(is(TK.EQ)) {System.err.print(" ==");}//&************
+        else if(is(TK.GT)) {System.err.print(" >");}//********** 
+        else if(is(TK.LT)) {System.err.print(" <");}//********** 
+        else if(is(TK.GE)) {System.err.print(" >=");}//**********
+        else if(is(TK.GL)) {System.err.print(" <=");}//**********  
         scan();
     }
 
     private void addop() {
         // you'll need to add some code here
-        if(is.(TK.MINUS)) {System.err.print(" -");}//**********
-        if(is.(TK.PLUS)) {System.err.print(" +");}//**********  
+        if(is(TK.MINUS)) {System.err.print(" -");}//**********
+        if(is(TK.PLUS)) {System.err.print(" +");}//**********  
         scan();
     }
 
     private void multop() {
         // you'll need to add some code here
-        if(is.(TK.TIMES)) {System.err.print(" *");}//********** 
-        if(is.(TK.DIVIDE)) {System.err.print(" /");}//********** 
+        if(is(TK.TIMES)) {System.err.print(" *");}//********** 
+        if(is(TK.DIVIDE)) {System.err.print(" /");}//********** 
         scan();
     }
     // you'll need to add a bunch of methods here
