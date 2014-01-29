@@ -53,11 +53,12 @@ public class Parser {
         while( is(TK.ID) ) {
             newSym = new Symbol(tok.lineNumber, table.depth, tok.string);
             if(table.addSym(newSym)){
-                System.err.print(" "+ table.sym_top().lastElement().name);//********** 
+                System.err.print(" x_"+ table.sym_top().lastElement().name);//********** 
                 perm_table.sym_top().addElement(newSym);
             }
             scan();
         }
+        System.err.println(";");//********** 
         mustbe(TK.RAV);
 
     }
@@ -84,36 +85,44 @@ public class Parser {
         newSym = new Symbol(tok.lineNumber, table.depth, tok.string);
        // System.err.println( "variable " + newSym.name + " linenumber: " + newSym.dec_line + "address:" + newSym);
         table.assign_check(newSym);
+        System.err.print("x_"+table.sym_top().lastElement().name + " = ");//********** 
         //table.checkSym(newSym);
         scan();
         mustbe(TK.ASSIGN);
         expression();
+        System.err.println(";");//********** 
 
     }
 
     private void print() {
         // you'll need to add some code here
+        System.err.print("printf(");//********** 
         scan();
         expression();
+        System.err.println(");");//********** 
     }
 
     private void if_fn() {
         // you'll need to add some code here
-        scan();
+        scan();//skip if
+        System.err.print("if(");//********** 
         guarded_commands();
         mustbe(TK.FI);
+        System.err.println("\n}");//********** 
     }
 
-    private void do_fn() {
+    private void do_fn() { // while loop
         // you'll need to add some code here
         scan();//skip do
-        guarded_commands();
+        System.err.print("while(");//********** 
+        guarded_commands_do();
         mustbe(TK.OD);
     }
 
     private void fa() {
         // you'll need to add some code here
         scan();// skip fa
+        if(is.(TK.NE)) {System.err.print(" != ");}//********** 
         if(is(TK.ID)){
         newSym = new Symbol(tok.lineNumber, table.depth, tok.string);
         table.assign_check(newSym);
@@ -135,36 +144,58 @@ public class Parser {
     private void guarded_commands() {
         // you'll need to add some code here
         guarded_command();
-        while(is(TK.BOX)){
+        while(is(TK.BOX)){ // else if
             scan();
+            System.err.print("else if(");//********** 
             guarded_command();
         }
         if (is(TK.ELSE)){
             scan();
+            System.err.println("else");//********** 
+            commands();
+        }
+    }
+    private void guarded_commands_do() { //******************
+        // you'll need to add some code here
+        guarded_command();
+        while(is(TK.BOX)){ // else if
+            scan();
+            System.err.print("while(");//********** 
+            guarded_command();
+        }
+        if (is(TK.ELSE)){
+            scan();
+            System.err.println("while(true)");//********** 
             commands();
         }
     }
 
     private void guarded_command() {
         // you'll need to add some code here
+        
         expression();
+        System.err.println(" )");//********** 
         commands();
     }
 
     private void commands() {
         // you'll need to add some code here
         mustbe(TK.ARROW);
+        System.err.println("{");//********** 
         table.depth++;
         block();
+        System.err.println("}");//********** 
     }
 
     private void expression() {
         // you'll need to add some code here
+        //System.err.print(" (");//********** 
         simple();
         if(is(TK.NE) || is(TK.GE) || is(TK.LE) || is(TK.GT) || is(TK.LT) || is(TK.EQ)){
             relop();
             simple();
         }
+        //System.err.print(" )");//********** 
     }
 
     private void simple() {
@@ -178,41 +209,59 @@ public class Parser {
 
     private void term() {
         // you'll need to add some code here
+        System.err.print(" (");//********** 
         factor();
         while(is(TK.TIMES) || is(TK.DIVIDE)){
             multop();
             factor();
         }
+        System.err.print(" )");//********** 
     }
 
     private void factor() {
         // you'll need to add some code here
         if(is(TK.LPAREN)){
+            System.err.print(" (");//********** 
             scan();
             expression();
+            System.err.print(" )");//********** 
             mustbe(TK.RPAREN);
         }
         else if(is(TK.ID)){ 
             newSym = new Symbol(tok.lineNumber, table.depth, tok.string);
             table.checkSym(newSym);
+            System.err.print(" x_"+table.sym_top().lastElement().name);//********** 
             scan();
         }
-        else if(is(TK.NUM)){ scan();}
+        else if(is(TK.NUM)){ 
+            scan();
+            System.err.print(" "+TK.NUM);//********** 
+        }
         else{parse_error("factor");}
     }
 
     private void relop() {
         // you'll need to add some code here
+        if(is.(TK.NE)) {System.err.print(" !=");}//********** 
+        else if(is.(TK.EQ)) {System.err.print(" ==");}//&************
+        else if(is.(TK.GT)) {System.err.print(" >");}//********** 
+        else if(is.(TK.LT)) {System.err.print(" <");}//********** 
+        else if(is.(TK.GE)) {System.err.print(" >=");}//**********
+        else if(is.(TK.GL)) {System.err.print(" <=");}//**********  
         scan();
     }
 
     private void addop() {
         // you'll need to add some code here
+        if(is.(TK.MINUS)) {System.err.print(" -");}//**********
+        if(is.(TK.PLUS)) {System.err.print(" +");}//**********  
         scan();
     }
 
     private void multop() {
         // you'll need to add some code here
+        if(is.(TK.TIMES)) {System.err.print(" *");}//********** 
+        if(is.(TK.DIVIDE)) {System.err.print(" /");}//********** 
         scan();
     }
     // you'll need to add a bunch of methods here
