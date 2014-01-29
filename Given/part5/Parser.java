@@ -140,7 +140,9 @@ public class Parser {
            // System.out.print(" ||");//********** 
             scan();//skip ST
             vec.clear();//***************
+            System.out.print("&& (1 ||");//********** 
             expression();
+            System.out.print(")");//********** 
         }
         System.out.print("; x_"+ id_name +"++)");//********** 
         command_for();//***************was prev commands()
