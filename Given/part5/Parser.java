@@ -29,9 +29,9 @@ public class Parser {
 
     private void program() {
         perm_table.sym_push();
-        System.out.println("#include<stdio.h>\nmain(){");//**********
+        System.err.println("#include<stdio.h>\nmain(){");//**********
         block();
-        System.out.println("}");//**********
+        System.err.println("}");//**********
     }
 
     private void block() {
@@ -50,16 +50,16 @@ public class Parser {
 
     private void declarations() {
         mustbe(TK.VAR);
-        //System.out.println("int");//********** 
+        //System.err.println("int");//********** 
         while( is(TK.ID) ) {
             newSym = new Symbol(tok.lineNumber, table.depth, tok.string);
             if(table.addSym(newSym)){
-                System.out.println("int x_"+ table.sym_top().lastElement().name+" = -12345;");//********** 
+                System.err.println("int x_"+ table.sym_top().lastElement().name+" = -12345;");//********** 
                 perm_table.sym_top().addElement(newSym);
             }
             scan();
         }
-        //System.out.println(";");//********** 
+        //System.err.println(";");//********** 
         mustbe(TK.RAV);
 
     }
@@ -84,37 +84,37 @@ public class Parser {
     private void assignment() {
         // you'll need to add some code here
         newSym = new Symbol(tok.lineNumber, table.depth, tok.string);
-       // System.out.println( "variable " + newSym.name + " linenumber: " + newSym.dec_line + "address:" + newSym);
+       // System.err.println( "variable " + newSym.name + " linenumber: " + newSym.dec_line + "address:" + newSym);
         table.assign_check(newSym); //print in the assign
         //table.checkSym(newSym);
         scan();
         mustbe(TK.ASSIGN);
         expression();
-        System.out.println(";");//********** 
+        System.err.println(";");//********** 
 
     }
 
     private void print() {
         // you'll need to add some code here
-        System.out.print("printf(\"%d\\n\",");//********** 
+        System.err.print("printf(\"%d\\n\",");//********** 
         scan();
         expression();
-        System.out.println(");");//********** 
+        System.err.println(");");//********** 
     }
 
     private void if_fn() {
         // you'll need to add some code here
         scan();//skip if
-        System.out.print("if(");//********** 
+        System.err.print("if(");//********** 
         guarded_commands();
         mustbe(TK.FI);
-        //System.out.println("\n}");//********** 
+        //System.err.println("\n}");//********** 
     }
 
     private void do_fn() { // while loop
         // you'll need to add some code here
         scan();//skip do
-        System.out.print("while(");//********** 
+        System.err.print("while(");//********** 
         guarded_commands_do();
         mustbe(TK.OD);
     }
@@ -122,7 +122,7 @@ public class Parser {
     private void fa() {
         // you'll need to add some code here
         scan();// skip fa
-        System.out.print("for(");//********** 
+        System.err.print("for(");//********** 
         if(is(TK.ID)){
         newSym = new Symbol(tok.lineNumber, table.depth, tok.string);
         table.assign_check(newSym);
@@ -130,26 +130,26 @@ public class Parser {
         }
         String id_name = new String(tok.string);//******************
         mustbe(TK.ID); 
-        //System.out.print(" =");//********** 
+        //System.err.print(" =");//********** 
         mustbe(TK.ASSIGN);
         expression();
         mustbe(TK.TO);
-        System.out.print("; x_"+id_name + " <=");//********** 
+        System.err.print("; x_"+id_name + " <=");//********** 
         expression();
         vec.clear();//***************
         if (is(TK.ST)){
-           // System.out.print(" ||");//********** 
+           // System.err.print(" ||");//********** 
             scan();//skip ST
-            System.out.print("&& (1 ||");//********** 
+            System.err.print("&& (1 ||");//********** 
             expression();
-            System.out.print(")");//********** 
-            System.out.print("; x_"+ id_name +"++)");//********** 
+            System.err.print(")");//********** 
+            System.err.print("; x_"+ id_name +"++)");//********** 
             command_for();//***************was prev commands()
 
         }
         
         else{
-            System.out.print("; x_"+ id_name +"++)");//********** 
+            System.err.print("; x_"+ id_name +"++)");//********** 
             commands();
         }
 
@@ -161,12 +161,12 @@ public class Parser {
         guarded_command();
         while(is(TK.BOX)){ // else if
             scan();
-            System.out.print("else if(");//********** 
+            System.err.print("else if(");//********** 
             guarded_command();
         }
         if (is(TK.ELSE)){
             scan();
-            System.out.println("else");//********** 
+            System.err.println("else");//********** 
             commands();
         }
     }
@@ -175,12 +175,12 @@ public class Parser {
         guarded_command();
         while(is(TK.BOX)){ // else if
             scan(); // skip box
-            System.out.print("while(");//********** 
+            System.err.print("while(");//********** 
             guarded_command();
         }
         if (is(TK.ELSE)){
             scan();
-            System.out.println("while(true)");//********** 
+            System.err.println("while(true)");//********** 
             commands();
         }
     }
@@ -189,79 +189,79 @@ public class Parser {
         // you'll need to add some code here
         
         expression();
-        System.out.println(")");//********** 
+        System.err.println(")");//********** 
         commands();
     }
 
     private void commands() {
         // you'll need to add some code here
         mustbe(TK.ARROW);
-        System.out.println("{");//********** 
+        System.err.println("{");//********** 
         table.depth++;
         block();
-        System.out.println("}");//********** 
+        System.err.println("}");//********** 
     }
 
     private void command_for() {
         // you'll need to add some code here
         mustbe(TK.ARROW);
-        System.out.println("{");//********** 
-        System.out.print("if(0 ==(");//***********
+        System.err.println("{");//********** 
+        System.err.print("if(0 ==(");//***********
         for(int i=0; i < vec.size(); i++){//*************
-            System.out.print(vec.get(i));//**********
+            System.err.print(vec.get(i));//**********
         }//**********
-        System.out.println(")) continue;");//**********
+        System.err.println(")) continue;");//**********
         vec.clear();//**********     
         table.depth++;
         block();
-        System.out.println("}");//********** 
+        System.err.println("}");//********** 
     }
 
     private void expression() {
         // you'll need to add some code here
-        //System.out.print(" (");//********** 
+        //System.err.print(" (");//********** 
         simple();
         if(is(TK.NE) || is(TK.GE) || is(TK.LE) || is(TK.GT) || is(TK.LT) || is(TK.EQ)){
             relop();
             simple();
         }
-        //System.out.print(" )");//********** 
+        //System.err.print(" )");//********** 
     }
 
     private void simple() {
         // you'll need to add some code here
-        System.out.print(" (");//******************
+        System.err.print(" (");//******************
         vec.addElement(" (");//*************************
         term();
         while(is(TK.PLUS) || is(TK.MINUS)){
             addop();
             term();
         }
-        System.out.print(" )");//******************
+        System.err.print(" )");//******************
         vec.addElement(")");//*************************
     }
 
     private void term() {
         // you'll need to add some code here
-        System.out.print(" (");//********** 
+        System.err.print(" (");//********** 
         vec.addElement("(");//*************************
         factor();
         while(is(TK.TIMES) || is(TK.DIVIDE)){
             multop();
             factor();
         }
-        System.out.print(" )");//********** 
+        System.err.print(" )");//********** 
         vec.addElement(")");//*************************
     }
 
     private void factor() {
         // you'll need to add some code here
         if(is(TK.LPAREN)){
-            System.out.print(" (");//********** 
+            System.err.print(" (");//********** 
             vec.addElement("(");//*************************
             scan();
             expression();
-            System.out.print(" )");//********** 
+            System.err.print(" )");//********** 
             vec.addElement(")");//*************************
             mustbe(TK.RPAREN);
         }
@@ -272,7 +272,7 @@ public class Parser {
             scan();
         }
         else if(is(TK.NUM)){ 
-            System.out.print(" "+tok.string);//**********
+            System.err.print(" "+tok.string);//**********
             vec.addElement(tok.string);//*************************
             scan();
              
@@ -282,22 +282,22 @@ public class Parser {
 
     private void relop() {
         // you'll need to add some code here
-        if(is(TK.NE)) {System.out.print(" !=");
+        if(is(TK.NE)) {System.err.print(" !=");
             vec.addElement("!=");//*************************
         }//********** 
-        else if(is(TK.EQ)) {System.out.print(" ==");
+        else if(is(TK.EQ)) {System.err.print(" ==");
             vec.addElement(" ==");//*************************
         }//&************
-        else if(is(TK.GT)) {System.out.print(" >");
+        else if(is(TK.GT)) {System.err.print(" >");
             vec.addElement(">");//*************************
         }//********** 
-        else if(is(TK.LT)) {System.out.print(" <");
+        else if(is(TK.LT)) {System.err.print(" <");
             vec.addElement("<");//*************************
         }//********** 
-        else if(is(TK.GE)) {System.out.print(" >=");
+        else if(is(TK.GE)) {System.err.print(" >=");
             vec.addElement(" >=");//*************************
         }//**********
-        else if(is(TK.LE)) {System.out.print(" <=");
+        else if(is(TK.LE)) {System.err.print(" <=");
             vec.addElement("<=");//*************************
         }//**********  
         scan();
@@ -305,10 +305,10 @@ public class Parser {
 
     private void addop() {
         // you'll need to add some code here
-        if(is(TK.MINUS)) {System.out.print(" -");
+        if(is(TK.MINUS)) {System.err.print(" -");
             vec.addElement(" -");//*************************
         }//**********
-        if(is(TK.PLUS)) {System.out.print(" +");
+        if(is(TK.PLUS)) {System.err.print(" +");
             vec.addElement(" +");//*************************
         }//**********  
         scan();
@@ -316,10 +316,10 @@ public class Parser {
 
     private void multop() {
         // you'll need to add some code here
-        if(is(TK.TIMES)) {System.out.print(" *");
+        if(is(TK.TIMES)) {System.err.print(" *");
             vec.addElement(" *");//*************************
         }//********** 
-        if(is(TK.DIVIDE)) {System.out.print(" /");
+        if(is(TK.DIVIDE)) {System.err.print(" /");
             vec.addElement(" /");//*************************
         }//********** 
         scan();
