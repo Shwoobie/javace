@@ -58,7 +58,7 @@ public class Symbol_table {
 
    public boolean addSym(Symbol newSym) {
       if (shallow_compare(newSym)){ //check if it is redeclared
-        System.out.println( "variable " + newSym.name + " is redeclared on line " + newSym.dec_line);
+        System.err.println( "variable " + newSym.name + " is redeclared on line " + newSym.dec_line);
         return false;
       }
       else{
